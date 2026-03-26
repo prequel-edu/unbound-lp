@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unbound Academy: Tuition-Free Virtual Charter School for Arizona Grades 4–8</title>
+  <meta name="description" content="Unbound Academy is Arizona's tuition-free virtual public charter school for grades 4–8. Master academics in 2 hours. Afternoons for real-world skills. Apply free today." />
+  <link rel="canonical" href="https://unbound.school/arizona-virtual-charter-school-grades-4-8" />
+
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TXR4Q7DK');</script>
+  <!-- FB Pixel -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2911764312318379');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2911764312318379&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    @font-face { font-family:'Satoshi'; src:url('../unbound-new.webflow/fonts/Satoshi-Variable.ttf') format('truetype'); font-weight:300 900; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Coolvetica Condensed'; src:url('../unbound-new.webflow/fonts/coolvetica-condensed-rg.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+  </style>
+
+  <style>
+    /* ── RESET ──────────────────────────────────────────── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Satoshi',sans-serif;background:#fafaf7;color:#080808;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    ul{list-style:none}
+
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root{
+      --black:#080808; --b2:#111111; --b3:#1a1a1a;
+      --green:#ceff65;
+      --white:#ffffff; --off:#fafaf7; --off2:#f2f2ee;
+      --ink:#080808; --ink2:#3a3a3a; --ink3:#666;
+      --border-l:#e0e0d8; --border-d:#222222;
+    }
+    .c{max-width:1160px;margin:0 auto;padding:0 28px}
+
+    /* ── TYPE ───────────────────────────────────────────── */
+    .disp{font-family:'Coolvetica Condensed',sans-serif;font-weight:400;letter-spacing:.02em;text-transform:uppercase;line-height:1.05}
+    .d1{font-size:clamp(48px,7vw,90px)}
+    .d2{font-size:clamp(34px,5vw,60px)}
+    .d3{font-size:clamp(26px,3.5vw,44px)}
+    .d4{font-size:clamp(20px,2.5vw,32px)}
+    .green-t{color:var(--green)}
+    .ink3{color:var(--ink3)}
+
+    /* ── LABEL ──────────────────────────────────────────── */
+    .lbl-dark{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+    .lbl-light{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#999;margin-bottom:12px}
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav{position:sticky;top:0;z-index:200;background:var(--black);border-bottom:1px solid var(--border-d)}
+    .nav-in{max-width:1160px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .nav-logo img{height:28px;width:auto;filter:brightness(0) invert(1)}
+    .nav-logo-text{font-family:'Coolvetica Condensed',sans-serif;font-size:22px;letter-spacing:.05em;text-transform:uppercase;color:#fff}
+    .nav-logo-text span{color:var(--green)}
+    .nav-links{display:flex;gap:28px}
+    .nav-links a{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#777;transition:color .2s}
+    .nav-links a:hover{color:#fff}
+    .btn-nav{font-family:'Coolvetica Condensed',sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;background:var(--green);color:var(--black);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+    .btn-nav:hover{opacity:.88}
+
+    /* ── HERO (dark, video) ──────────────────────────────── */
+    .hero{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;background:var(--black)}
+    .hero-vid{position:absolute;inset:0;z-index:0}
+    .hero-vid video{width:100%;height:100%;object-fit:cover;opacity:.16}
+    .hero-vid::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,8,8,.1) 0%,rgba(8,8,8,.65) 55%,rgba(8,8,8,1) 100%)}
+    .hero-body{position:relative;z-index:2;width:100%;padding:80px 0 64px}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:20px}
+    .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--green)}
+    .hero h1{margin-bottom:4px;color:#fff}
+    .hero-sub{font-size:18px;line-height:1.7;color:#aaa;max-width:560px;margin:20px 0 36px}
+    .hero-sub strong{color:#fff}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:'Coolvetica Condensed',sans-serif;font-size:16px;letter-spacing:.1em;text-transform:uppercase;padding:15px 36px;background:var(--green);color:var(--black);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+    .btn-primary:hover{opacity:.88}
+    .btn-primary svg{width:15px;height:15px}
+    .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .hpill{font-size:12px;font-weight:600;padding:6px 13px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#aaa}
+    .hpill span{color:var(--green);margin-right:4px}
+
+    /* ── PRESS STRIP (dark, marquee) ────────────────────── */
+    .press-strip{background:var(--b2);border-bottom:1px solid var(--border-d);padding:0;overflow:hidden}
+    .press-inner{display:flex;align-items:stretch}
+    .press-label{flex-shrink:0;display:flex;align-items:center;padding:14px 24px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;border-right:1px solid var(--border-d);white-space:nowrap;z-index:2;position:relative;background:var(--b2)}
+    .press-marquee{overflow:hidden;flex:1;-webkit-mask-image:linear-gradient(to right,transparent 0,black 60px,black calc(100% - 60px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,black 60px,black calc(100% - 60px),transparent 100%)}
+    .press-track{display:flex;align-items:center;gap:0;animation:marquee 28s linear infinite;width:max-content}
+    .press-track:hover{animation-play-state:paused}
+    .press-logo{padding:14px 28px;font-size:12px;font-weight:700;letter-spacing:.06em;color:#555;border-right:1px solid var(--border-d);white-space:nowrap;text-transform:uppercase;transition:color .2s}
+    .press-logo:hover{color:#bbb}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ── FORM SECTION (light) ────────────────────────────── */
+    .form-sec{background:var(--off);padding:80px 0;border-bottom:1px solid var(--border-l)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-start}
+    .form-left .avail-row{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#080808;margin-bottom:16px}
+    .avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+    .form-left h2{margin-bottom:16px;color:var(--ink)}
+    .form-left>p{font-size:16px;color:var(--ink3);line-height:1.75;margin-bottom:24px}
+    /* $0 block */
+    .price-block{background:#fff;border:1px solid var(--border-l);border-radius:8px;padding:20px 24px;margin:0 0 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+    .price-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#999;margin-bottom:4px}
+    .price-num{font-family:'Coolvetica Condensed',sans-serif;font-size:52px;color:var(--ink);line-height:1}
+    .price-note{font-size:12px;color:var(--ink3);margin-top:4px;max-width:200px;line-height:1.5}
+    .price-icon{font-size:40px;opacity:.25}
+    /* Reassure */
+    .reassure{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .ri{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink2);line-height:1.5}
+    .ri-check{color:var(--green);font-weight:700;flex-shrink:0;font-size:14px;width:18px;height:18px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:1px}
+    .ri strong{color:var(--ink)}
+    /* Quote */
+    .side-quote{border-left:2px solid var(--black);padding-left:16px}
+    .side-quote .qt{font-size:15px;font-style:italic;color:var(--ink2);line-height:1.6;margin-bottom:6px}
+    .side-quote .qb{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999}
+    /* Form card */
+    .form-card{background:#fff;border:1px solid var(--border-l);border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+    .form-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--black);color:var(--green);padding:4px 12px;border-radius:4px;margin-bottom:14px}
+    .form-card h3{font-family:'Coolvetica Condensed',sans-serif;font-size:28px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+    .form-card .fsub{font-size:13px;color:var(--ink3);margin-bottom:22px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .fg{margin-bottom:12px}
+    .fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:5px}
+    .fg input,.fg select{width:100%;padding:12px 14px;background:#fafaf7;border:1px solid var(--border-l);border-radius:6px;color:var(--ink);font-size:14px;font-family:'Satoshi',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+    .fg input::placeholder{color:#bbb}
+    .fg select{cursor:pointer}
+    .fg select option{background:#fff;color:var(--ink)}
+    .fg input:focus,.fg select:focus{border-color:var(--ink);box-shadow:0 0 0 2px rgba(8,8,8,.06)}
+    .consent{font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 14px}
+    .consent a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+    .btn-submit{width:100%;padding:15px;font-family:'Coolvetica Condensed',sans-serif;font-size:17px;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--green);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+    .btn-submit:hover{opacity:.85}
+    .form-trust{text-align:center;font-size:11px;color:#bbb;margin-top:10px}
+
+    /* ── BENEFITS (light, 3 cards) ───────────────────────── */
+    .benefits-sec{background:var(--white);padding:80px 0;border-bottom:1px solid var(--border-l)}
+    .benefits-intro{max-width:640px;margin-bottom:48px}
+    .benefits-intro h2{margin-bottom:14px;color:var(--ink)}
+    .benefits-intro p{font-size:16px;color:var(--ink3);line-height:1.75}
+    .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .bcard{background:var(--off);border:1px solid var(--border-l);border-radius:12px;padding:32px;transition:box-shadow .25s,transform .25s}
+    .bcard:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-3px)}
+    .bcard-num{font-family:'Coolvetica Condensed',sans-serif;font-size:72px;color:var(--border-l);line-height:1;margin-bottom:4px}
+    .bcard h3{font-family:'Coolvetica Condensed',sans-serif;font-size:26px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);line-height:1.1;margin-bottom:12px}
+    .bcard p{font-size:14px;color:var(--ink3);line-height:1.7;margin-bottom:20px}
+    .bcard-list{display:flex;flex-direction:column;gap:8px}
+    .bi{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--ink2);line-height:1.5}
+    .bi-dot{width:6px;height:6px;border-radius:50%;background:var(--ink);flex-shrink:0;margin-top:7px}
+
+    /* ── PARALLAX SECTIONS ───────────────────────────────── */
+    .parallax-wrap{position:relative;overflow:hidden}
+    .parallax-img{position:absolute;inset:-30% 0;z-index:0;background-size:cover;background-position:center;will-change:transform}
+    .parallax-overlay{position:absolute;inset:0;z-index:1}
+    .parallax-content{position:relative;z-index:2}
+
+    /* ── SCHEDULE (dark, parallax bg) ───────────────────── */
+    .schedule-sec{padding:80px 0;background:var(--black)}
+    .schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:flex-start}
+    .sch-left h2{margin-bottom:14px;color:#fff}
+    .sch-left p{font-size:16px;color:#777;line-height:1.7;max-width:400px}
+    .stat-callout{margin-top:28px;padding:20px 24px;background:rgba(206,255,101,.06);border:1px solid rgba(206,255,101,.15);border-radius:8px}
+    .stat-big{font-family:'Coolvetica Condensed',sans-serif;font-size:44px;color:var(--green);line-height:1}
+    .stat-note{font-size:13px;color:#888;margin-top:6px;line-height:1.55}
+    .timeline{border:1px solid #222;border-radius:10px;overflow:hidden}
+    .tl-item{display:flex;border-bottom:1px solid #1e1e1e}
+    .tl-item:last-child{border-bottom:none}
+    .tl-time{font-family:'Coolvetica Condensed',sans-serif;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--green);min-width:96px;padding:18px 16px;background:rgba(206,255,101,.03);border-right:1px solid #1e1e1e;display:flex;align-items:center;flex-shrink:0}
+    .tl-body{padding:18px 20px}
+    .tl-body h4{font-size:14px;font-weight:700;color:#f0f0f0;margin-bottom:3px}
+    .tl-body p{font-size:13px;color:#888;line-height:1.55}
+
+    /* ── CLUBS (dark) ────────────────────────────────────── */
+    .clubs-sec{padding:80px 0;background:var(--b2);border-top:1px solid var(--border-d)}
+    .clubs-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--border-d)}
+    .clubs-vid{position:relative;min-height:420px}
+    .clubs-vid video{width:100%;height:100%;object-fit:cover;display:block}
+    .clubs-right{background:var(--b3);padding:44px;display:flex;flex-direction:column;gap:20px}
+    .clubs-right h2{color:#fff;margin-bottom:0}
+    .clubs-right>p{font-size:14px;color:#999;line-height:1.65}
+    .clubs-note{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);padding:10px 14px;background:rgba(206,255,101,.07);border:1px solid rgba(206,255,101,.15);border-radius:6px;margin-bottom:4px}
+    .clubs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .club-card{background:var(--b2);border:1px solid #2a2a2a;border-radius:8px;padding:16px;transition:border-color .2s}
+    .club-card:hover{border-color:rgba(206,255,101,.3)}
+    .club-card h4{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#f0f0f0;margin-bottom:4px}
+    .club-card p{font-size:12px;color:#888;line-height:1.5}
+
+    /* ── EVENTS SECTION (light) ──────────────────────────── */
+    .events-sec{background:var(--off);padding:80px 0;border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)}
+    .events-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;margin-bottom:44px}
+    .events-intro h2{margin-bottom:14px;color:var(--ink)}
+    .events-intro p{font-size:15px;color:var(--ink3);line-height:1.75}
+    .events-intro .btn-outline-dk{display:inline-flex;align-items:center;gap:8px;font-family:'Coolvetica Condensed',sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:11px 22px;border:1.5px solid var(--ink);color:var(--ink);border-radius:6px;cursor:pointer;transition:background .2s,color .2s;align-self:flex-end}
+    .events-intro .btn-outline-dk:hover{background:var(--ink);color:var(--green)}
+    /* Scroll carousel */
+    .events-carousel-wrap{position:relative}
+    .events-carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px;scrollbar-width:none}
+    .events-carousel::-webkit-scrollbar{display:none}
+    .event-card{flex:0 0 340px;scroll-snap-align:start;background:#fff;border:1px solid var(--border-l);border-radius:12px;overflow:hidden;transition:box-shadow .25s;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+    .event-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.1)}
+    /* Photo placeholder */
+    .event-photo{width:100%;height:200px;background:var(--off2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+    .event-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .event-card:hover .event-photo img{transform:scale(1.06)}
+    .event-photo-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:#ccc}
+    .event-photo-placeholder svg{width:32px;height:32px}
+    .event-photo-placeholder span{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    .event-body{padding:24px}
+    .event-qtr{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:6px}
+    .event-name{font-family:'Coolvetica Condensed',sans-serif;font-size:24px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;line-height:1.15}
+    .event-detail{font-size:13px;color:var(--ink3);line-height:1.6}
+    /* Scroll dots */
+    .carousel-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+    .carousel-dots{display:flex;gap:6px}
+    .carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--border-l);cursor:pointer;transition:background .2s}
+    .carousel-dot.active{background:var(--ink)}
+    .carousel-arrows{display:flex;gap:8px}
+    .carousel-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border-l);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s}
+    .carousel-arrow:hover{border-color:var(--ink);background:var(--off2)}
+    .carousel-arrow svg{width:14px;height:14px;color:var(--ink)}
+
+    /* ── TESTIMONIALS (dark) ─────────────────────────────── */
+    .testy-sec{padding:80px 0;background:var(--black)}
+    .testy-header{margin-bottom:40px}
+    .testy-header h2{color:#fff;margin-bottom:8px}
+    .testy-header p{font-size:15px;color:#aaa}
+    .testy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .testy-card{background:var(--b3);border:1px solid var(--border-d);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
+    .testy-card:hover{border-color:rgba(206,255,101,.3)}
+    .testy-photo{width:100%;height:190px;overflow:hidden}
+    .testy-photo img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s ease}
+    .testy-card:hover .testy-photo img{transform:scale(1.05)}
+    .testy-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:10px}
+    .testy-ql{font-family:'Coolvetica Condensed',sans-serif;font-size:20px;letter-spacing:.02em;text-transform:uppercase;color:#fff;line-height:1.2}
+    .testy-p{font-size:13px;color:#aaa;line-height:1.65;flex:1}
+    .testy-by{font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.07em}
+
+    /* ── FAQ (light) ─────────────────────────────────────── */
+    .faq-sec{background:var(--white);padding:80px 0;border-top:1px solid var(--border-l)}
+    .faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:flex-start}
+    .faq-intro h2{margin-bottom:14px;color:var(--ink)}
+    .faq-intro p{font-size:15px;color:var(--ink3);line-height:1.7}
+    .faq-intro a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+    .faq-list{display:flex;flex-direction:column}
+    .faq-item{border-bottom:1px solid var(--border-l)}
+    .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;cursor:pointer;user-select:none;font-size:15px;font-weight:600;color:var(--ink2);transition:color .2s}
+    .faq-q:hover{color:var(--ink)}
+    .faq-arr{font-size:22px;color:var(--ink);flex-shrink:0;transition:transform .25s;opacity:.3}
+    .faq-item.open .faq-arr{transform:rotate(45deg);opacity:1}
+    .faq-item.open .faq-q{color:var(--ink)}
+    .faq-a{display:none;padding:0 0 18px;font-size:14px;color:var(--ink3);line-height:1.7}
+    .faq-item.open .faq-a{display:block}
+
+    /* ── FINAL CTA (green) ───────────────────────────────── */
+    .cta-sec{background:var(--green);padding:80px 0;text-align:center}
+    .cta-sec .lbl-cta{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.4);margin-bottom:12px}
+    .cta-sec h2{color:var(--black);margin-bottom:14px}
+    .cta-sec p{font-size:17px;color:rgba(8,8,8,.6);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+    .btn-dark{display:inline-block;padding:15px 44px;font-family:'Coolvetica Condensed',sans-serif;font-size:17px;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--green);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+    .btn-dark:hover{opacity:.88}
+    .cta-note{font-size:13px;color:rgba(8,8,8,.4);margin-top:12px}
+
+    /* ── FOOTER (dark) ───────────────────────────────────── */
+    footer{background:var(--b2);padding:56px 0 28px;border-top:1px solid var(--border-d)}
+    .foot-proof{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;padding-bottom:32px;border-bottom:1px solid var(--border-d);margin-bottom:40px}
+    .fp{display:flex;align-items:center;gap:7px;font-size:13px;color:#888}
+    .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+    .foot-brand{font-family:'Coolvetica Condensed',sans-serif;font-size:22px;letter-spacing:.05em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+    .foot-brand span{color:var(--green)}
+    .foot-tag{font-size:13px;color:#888;max-width:220px;line-height:1.6;margin-bottom:18px}
+    .foot-email p{font-size:13px;color:#888;margin-bottom:8px}
+    .foot-row{display:flex;gap:8px;margin-bottom:16px}
+    .foot-row input{flex:1;padding:10px 13px;background:var(--black);border:1px solid var(--border-d);border-radius:6px;color:#fff;font-size:13px;font-family:'Satoshi',sans-serif;outline:none}
+    .foot-row input::placeholder{color:#333}
+    .foot-row input:focus{border-color:var(--green)}
+    .foot-row button{padding:10px 14px;background:var(--green);color:var(--black);font-family:'Coolvetica Condensed',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+    .foot-row button:hover{opacity:.88}
+    .socials{display:flex;gap:8px}
+    .soc{width:32px;height:32px;border-radius:6px;background:var(--b3);display:flex;align-items:center;justify-content:center;color:#555;transition:background .2s,color .2s}
+    .soc:hover{background:rgba(206,255,101,.12);color:var(--green)}
+    .foot-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#333;margin-bottom:14px}
+    .foot-col a{display:block;font-size:13px;color:#888;margin-bottom:8px;transition:color .2s}
+    .foot-col a:hover{color:#fff}
+    .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;border-top:1px solid var(--border-d)}
+    .foot-copy{font-size:12px;color:#2a2a2a}
+    .foot-legal{display:flex;gap:16px;flex-wrap:wrap}
+    .foot-legal a{font-size:12px;color:#333;transition:color .2s}
+    .foot-legal a:hover{color:#fff}
+
+    /* ── STICKY MOBILE CTA ───────────────────────────────── */
+    .sticky-cta{display:none}
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media(max-width:900px){
+      .form-grid,.schedule-grid,.faq-layout,.clubs-layout,.events-intro{grid-template-columns:1fr}
+      .benefits-grid{grid-template-columns:1fr}
+      .testy-grid{grid-template-columns:1fr;max-width:480px}
+      .foot-grid{grid-template-columns:1fr 1fr}
+      .clubs-vid{min-height:260px}
+      .events-intro .btn-outline-dk{align-self:flex-start}
+    }
+    @media(max-width:640px){
+      .nav-links{display:none}
+      .frow,.clubs-grid{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+      .tl-time{min-width:78px;font-size:12px;padding:14px 10px}
+      .sticky-cta{display:block;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--b2);border-top:1px solid var(--border-d);padding:12px 20px}
+      .sticky-cta button{display:block;width:100%;background:var(--green);color:var(--black);font-family:'Coolvetica Condensed',sans-serif;font-size:16px;letter-spacing:.08em;text-transform:uppercase;padding:13px;border-radius:6px;border:none;cursor:pointer}
+      body{padding-bottom:68px}
+    }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXR4Q7DK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ════════════════════════════════
+     NAV
+════════════════════════════════ -->
+<nav>
+  <div class="nav-in">
+    <a href="https://unbound.school" class="nav-logo">
+      <img src="https://cdn.prod.website-files.com/67f3ddeb99a658ee1f0fdecd/68ae3f6dc323d625e489e8de_Group%2052.png" alt="Unbound Academy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+      <span class="nav-logo-text" style="display:none">Unbound<span>.</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#schedule">Schedule</a>
+      <a href="#clubs">Clubs</a>
+      <a href="#events">Events</a>
+      <a href="#faq">FAQs</a>
+    </div>
+    <button class="btn-nav" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Enroll Free →</button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════
+     HERO — dark, video bg
+════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-vid">
+    <video autoplay muted loop playsinline>
+      <source src="../unbound-new.webflow/videos/prequel-transcode.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="c">
+    <div class="hero-body">
+      <div class="hero-eyebrow">Arizona · Grades 4–8 · Tuition-Free Charter School</div>
+
+      <h1 class="disp d1">Academics in 2 Hours.</h1>
+      <h1 class="disp d1" style="color:var(--green)">Afternoons for the<br>skills that shape them.</h1>
+
+      <p class="hero-sub">
+        Unbound Academy is <strong>Arizona's tuition-free virtual charter school</strong> for grades 4–8.
+        Students master core academics in 2 hours, then spend afternoons in clubs that build skills schools don't teach.
+      </p>
+
+      <button class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+        Enroll Now. It's Free.
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+
+      <div class="hero-pills">
+        <div class="hpill"><span>✓</span>$0 Tuition</div>
+        <div class="hpill"><span>✓</span>Public Charter School</div>
+        <div class="hpill"><span>✓</span>All Applicants Accepted</div>
+        <div class="hpill"><span>✓</span>Laptop Provided</div>
+        <div class="hpill"><span>✓</span>2.8× Faster Outcomes (MAP Growth)</div>
+        <div class="hpill"><span>✓</span>No Homework, Ever</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     PRESS STRIP — dark
+════════════════════════════════ -->
+<div class="press-strip">
+  <div class="press-inner">
+    <div class="press-label">As Seen In</div>
+    <div class="press-marquee">
+      <!-- Track is duplicated for seamless loop -->
+      <div class="press-track">
+        <div class="press-logo">Washington Times</div>
+        <div class="press-logo">AZ Family</div>
+        <div class="press-logo">AZ Big Media</div>
+        <div class="press-logo">AZ Business Magazine</div>
+        <div class="press-logo">The AZ Insider</div>
+        <div class="press-logo">WNG.org</div>
+        <div class="press-logo">Independent Newsmedia</div>
+        <div class="press-logo">Arizona Digital Free Press</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="press-logo">Washington Times</div>
+        <div class="press-logo">AZ Family</div>
+        <div class="press-logo">AZ Big Media</div>
+        <div class="press-logo">AZ Business Magazine</div>
+        <div class="press-logo">The AZ Insider</div>
+        <div class="press-logo">WNG.org</div>
+        <div class="press-logo">Independent Newsmedia</div>
+        <div class="press-logo">Arizona Digital Free Press</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     FORM SECTION — light bg
+════════════════════════════════ -->
+<section class="form-sec" id="apply">
+  <div class="c">
+    <div class="form-grid">
+
+      <!-- Left pitch -->
+      <div class="form-left">
+        <div class="avail-row">
+          <div class="avail-dot"></div>
+          Now Enrolling · 2026–27 School Year
+        </div>
+        <h2 class="disp d3">Tuition-free virtual school for <span style="background:var(--black);color:var(--green);padding:0 6px;display:inline">grades 4–8</span></h2>
+        <p>Guided by real teachers and AI, Unbound students master academics in 2 hours, then spend afternoons building life skills. See if Unbound is the right fit for your family.</p>
+
+        <div class="price-block">
+          <div>
+            <div class="price-lbl">Annual Tuition</div>
+            <div class="price-num">$0</div>
+            <div class="price-note">Fully funded by Arizona. No fees, no reimbursement.</div>
+          </div>
+          <div class="price-icon">🛡️</div>
+        </div>
+
+        <div class="reassure">
+          <div class="ri"><div class="ri-check">✓</div><span><strong>Public charter school</strong>, state-funded, not homeschool</span></div>
+          <div class="ri"><div class="ri-check">✓</div><span><strong>All applicants accepted</strong>. No transcripts or test scores</span></div>
+          <div class="ri"><div class="ri-check">✓</div><span><strong>Laptop provided</strong> at no cost to enrolled students</span></div>
+          <div class="ri"><div class="ri-check">✓</div><span><strong>No homework, ever</strong>. Everything done before 2 PM</span></div>
+        </div>
+
+        <div class="side-quote">
+          <div class="qt">"Two hours of focused learning. The rest? Real life. Our boys finish core academics in just two hours a day."</div>
+          <div class="qb">Breanna L., Unbound Mom · Tucson, AZ</div>
+        </div>
+      </div>
+
+      <!-- Form card -->
+      <div>
+        <div class="form-card">
+          <div class="form-badge">🔥 Limited Spots</div>
+          <h3>Start Your Enrollment</h3>
+          <p class="fsub">Takes less than 2 minutes. No commitment required.</p>
+
+          <form onsubmit="handleSubmit(event)">
+            <input type="hidden" name="utm_source"   id="f_utm_source" />
+            <input type="hidden" name="utm_medium"   id="f_utm_medium" />
+            <input type="hidden" name="utm_campaign" id="f_utm_campaign" />
+            <input type="hidden" name="utm_term"     id="f_utm_term" />
+            <input type="hidden" name="utm_content"  id="f_utm_content" />
+
+            <div class="frow">
+              <div class="fg"><label>First Name *</label><input type="text" name="first_name" placeholder="First name" required /></div>
+              <div class="fg"><label>Last Name *</label><input type="text" name="last_name" placeholder="Last name" required /></div>
+            </div>
+            <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="parent@example.com" required /></div>
+            <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 000-0000" required /></div>
+            <div class="frow">
+              <div class="fg">
+                <label>State *</label>
+                <select name="state_code" required>
+                  <option value="">Select state</option>
+                  <option value="Arizona">Arizona</option>
+                  <option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arkansas">Arkansas</option>
+                  <option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option>
+                  <option value="Delaware">Delaware</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option>
+                  <option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option>
+                  <option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option>
+                  <option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option>
+                  <option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option>
+                  <option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option>
+                  <option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option>
+                  <option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option>
+                  <option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option>
+                  <option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option>
+                  <option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option>
+                  <option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option>
+                  <option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option>
+                  <option value="Washington">Washington</option><option value="West Virginia">West Virginia</option>
+                  <option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option>
+                </select>
+              </div>
+              <div class="fg"><label>Zip Code *</label><input type="text" name="zip_code" placeholder="85001" maxlength="5" required /></div>
+            </div>
+            <div class="fg">
+              <label>Grade Eligibility *</label>
+              <select name="grade_eligibility" required>
+                <option value="">Which best describes your child(ren)?</option>
+                <option value="eligible">At least one of my children is currently in Grade 4 to Grade 8</option>
+                <option value="All of my children are in Grade 3 or under, but I'd like to learn more">All of my children are in Grade 3 or under, but I'd like to learn more</option>
+                <option value="All of my children are in Grade 9 or above, but I'd like to learn more">All of my children are in Grade 9 or above, but I'd like to learn more</option>
+              </select>
+            </div>
+
+            <p class="consent">By submitting, you agree to receive calls and texts from Unbound Academy about your enrollment. Reply STOP to opt out. <a href="https://unbound.school/privacy-policy">Privacy Policy</a>.</p>
+            <button type="submit" class="btn-submit">Send Me Information →</button>
+          </form>
+          <p class="form-trust">🔒 Secure · No commitment · Arizona families</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     BENEFITS — light, 3 cards
+════════════════════════════════ -->
+<section class="benefits-sec">
+  <div class="c">
+    <div class="benefits-intro">
+      <div class="lbl-light">Why Unbound Works</div>
+      <h2 class="disp d3">What makes Unbound different.</h2>
+      <p>Most schools fill 6 hours with passive lectures and send homework home. Unbound was built from scratch. Every minute has a purpose.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="bcard">
+        <div class="bcard-num">01</div>
+        <h3>Academics<br>in 2 Hours</h3>
+        <p>AI-powered curriculum adapts to every student's pace and level, so learning is efficient, not exhausting.</p>
+        <div class="bcard-list">
+          <div class="bi"><div class="bi-dot"></div>Math, ELA, Science and Social Studies, done by 11 AM</div>
+          <div class="bi"><div class="bi-dot"></div>AI personalizes every lesson daily to the student's level</div>
+          <div class="bi"><div class="bi-dot"></div>Live certified teachers on screen throughout the day</div>
+          <div class="bi"><div class="bi-dot"></div>2.8× faster learning vs. national average (MAP Growth)</div>
+          <div class="bi"><div class="bi-dot"></div>Zero homework. Ever.</div>
+        </div>
+      </div>
+      <div class="bcard">
+        <div class="bcard-num">02</div>
+        <h3>Afternoons<br>for Real Skills</h3>
+        <p>After academics, students choose from project-based clubs that build skills most schools never teach.</p>
+        <div class="bcard-list">
+          <div class="bi"><div class="bi-dot"></div>2 clubs per session, chosen by student vote</div>
+          <div class="bi"><div class="bi-dot"></div>Clubs rotate each term</div>
+          <div class="bi"><div class="bi-dot"></div>Coding, chess, debate, entrepreneurship, arts, and more</div>
+          <div class="bi"><div class="bi-dot"></div>Real projects with real outcomes students can show</div>
+        </div>
+      </div>
+      <div class="bcard">
+        <div class="bcard-num">03</div>
+        <h3>Free.<br>For Every Family.</h3>
+        <p>Unbound is an Arizona public charter school, 100% funded by the state. There is nothing to pay, ever.</p>
+        <div class="bcard-list">
+          <div class="bi"><div class="bi-dot"></div>$0 tuition, $0 fees. No enrollment costs.</div>
+          <div class="bi"><div class="bi-dot"></div>Laptop provided at no cost to every enrolled student</div>
+          <div class="bi"><div class="bi-dot"></div>All applicants accepted. No transcripts or testing.</div>
+          <div class="bi"><div class="bi-dot"></div>IEPs and 504 plans fully supported</div>
+          <div class="bi"><div class="bi-dot"></div>Students can return to previous school at any time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SCHEDULE — dark
+════════════════════════════════ -->
+<section class="schedule-sec" id="schedule">
+  <div class="c">
+    <div class="schedule-grid">
+      <div class="sch-left">
+        <div class="lbl-dark">Daily Schedule</div>
+        <h2 class="disp d3">A Day at Unbound.</h2>
+        <p>School done by 2 PM. No homework, ever. Students own their afternoons.</p>
+        <div class="stat-callout">
+          <div class="stat-big">2.8×</div>
+          <div class="stat-note">faster learning than the national average,<br>measured by NWEA MAP Growth assessments</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">8:00 – 8:30</div>
+          <div class="tl-body">
+            <h4>Morning Check-In + Brain Warm-Up</h4>
+            <p>Strategy games, mindset challenges, and creative warm-ups get students ready to focus.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">8:30 – 11:00</div>
+          <div class="tl-body">
+            <h4>Core Academics: AI-Powered &amp; Self-Paced</h4>
+            <p>2 focused hours of Math, ELA, Science, and Social Studies, personalized to each student's level in real time.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">11:00 – 12:00</div>
+          <div class="tl-body">
+            <h4>Lunch + Social Break</h4>
+            <p>Students eat together on video, decompress, and connect with classmates.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:00 – 2:00</div>
+          <div class="tl-body">
+            <h4>Afternoon Clubs: Real-World Skills</h4>
+            <p>2 project-based clubs per session, chosen by student demand. Clubs rotate each term.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     CLUBS — dark, real club names
+════════════════════════════════ -->
+<section class="clubs-sec" id="clubs">
+  <div class="c">
+    <div class="clubs-layout">
+      <div class="clubs-vid">
+        <video autoplay muted loop playsinline>
+          <source src="../unbound-new.webflow/videos/prequel2-transcode.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="clubs-right">
+        <div class="lbl-dark">Afternoon Clubs</div>
+        <h2 class="disp d3">Where Students Discover Who They Are.</h2>
+        <p>Students vote on what runs next. Two clubs per session, always changing.</p>
+        <div class="clubs-grid">
+          <div class="club-card">
+            <h4>Page Turners</h4>
+            <p>Students choose a book, lead discussions, and dive deep into the story together</p>
+          </div>
+          <div class="club-card">
+            <h4>Level Up</h4>
+            <p>Design a personal 30-day well-being system using lessons from The Science of Well-Being</p>
+          </div>
+          <div class="club-card">
+            <h4>The Artist Project</h4>
+            <p>Research and become an expert on one artist. Then prove it with a mastery quiz</p>
+          </div>
+          <div class="club-card">
+            <h4>The Summit</h4>
+            <p>Explore global challenges and defend positions in a debate-style format</p>
+          </div>
+          <div class="club-card">
+            <h4>The Studio</h4>
+            <p>Come up with your own idea, make a plan, and build it. Fully student-driven.</p>
+          </div>
+          <div class="club-card">
+            <h4>Game On</h4>
+            <p>Build and publish a Scratch game that earns 100+ likes in the community</p>
+          </div>
+          <div class="club-card">
+            <h4>Grand Masters</h4>
+            <p>Chess instruction with a goal of reaching ELO 1000+ or ChessKid Knight Level</p>
+          </div>
+          <div class="club-card" style="background:rgba(206,255,101,.04);border-color:rgba(206,255,101,.15)">
+            <h4 style="color:var(--green)">More Coming</h4>
+            <p>Students vote on what's next. New clubs launch each term</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     IN-PERSON EVENTS — light, carousel
+════════════════════════════════ -->
+<section class="events-sec" id="events">
+  <div class="c">
+    <div class="events-intro">
+      <div>
+        <div class="lbl-light">Community Events</div>
+        <h2 class="disp d3">Unbound Families Come Together.</h2>
+        <p>Being virtual doesn't mean being disconnected. Every quarter, Unbound families gather in-person across Arizona, including field trips, celebrations, and the moments that make a school community real.</p>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--ink3);line-height:1.7;margin-bottom:20px;">4 in-person events per year<br>Open to all enrolled families<br>Across the Phoenix metro and statewide</p>
+        <button class="btn-outline-dk" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Enroll to Join →</button>
+      </div>
+    </div>
+
+    <div class="events-carousel-wrap">
+      <div class="events-carousel" id="eventsCarousel">
+
+        <!-- Event 1 — placeholder -->
+        <div class="event-card">
+          <div class="event-photo">
+            <!-- REPLACE: add event photo src here -->
+            <div class="event-photo-placeholder">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v6"/><circle cx="15" cy="15" r="2"/></svg>
+              <span>Event Photo</span>
+            </div>
+          </div>
+          <div class="event-body">
+            <div class="event-qtr">Q1 · Spring 2026</div>
+            <div class="event-name">[Event Name Here]</div>
+            <div class="event-detail">Phoenix Metro Area · All families welcome<br>Add event details, location, and highlights here.</div>
+          </div>
+        </div>
+
+        <!-- Event 2 — placeholder -->
+        <div class="event-card">
+          <div class="event-photo">
+            <!-- REPLACE: add event photo src here -->
+            <div class="event-photo-placeholder">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v6"/><circle cx="15" cy="15" r="2"/></svg>
+              <span>Event Photo</span>
+            </div>
+          </div>
+          <div class="event-body">
+            <div class="event-qtr">Q2 · Summer 2026</div>
+            <div class="event-name">[Event Name Here]</div>
+            <div class="event-detail">Arizona Statewide · All families welcome<br>Add event details, location, and highlights here.</div>
+          </div>
+        </div>
+
+        <!-- Event 3 — placeholder -->
+        <div class="event-card">
+          <div class="event-photo">
+            <!-- REPLACE: add event photo src here -->
+            <div class="event-photo-placeholder">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v6"/><circle cx="15" cy="15" r="2"/></svg>
+              <span>Event Photo</span>
+            </div>
+          </div>
+          <div class="event-body">
+            <div class="event-qtr">Q3 · Fall 2026</div>
+            <div class="event-name">[Event Name Here]</div>
+            <div class="event-detail">Phoenix Metro Area · All families welcome<br>Add event details, location, and highlights here.</div>
+          </div>
+        </div>
+
+        <!-- Teaser card -->
+        <div class="event-card" style="background:var(--off2);border-style:dashed;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 28px">
+          <div style="font-size:32px;margin-bottom:16px">📅</div>
+          <div class="event-name" style="font-size:20px">More Events<br>Every Quarter</div>
+          <p style="font-size:13px;color:var(--ink3);margin-top:8px;line-height:1.6">Enrolled families get early access to every event invite.</p>
+        </div>
+
+      </div>
+
+      <div class="carousel-nav">
+        <div class="carousel-dots" id="carouselDots">
+          <div class="carousel-dot active"></div>
+          <div class="carousel-dot"></div>
+          <div class="carousel-dot"></div>
+          <div class="carousel-dot"></div>
+        </div>
+        <div class="carousel-arrows">
+          <button class="carousel-arrow" id="carouselPrev" aria-label="Previous">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M10 4L6 8l4 4"/></svg>
+          </button>
+          <button class="carousel-arrow" id="carouselNext" aria-label="Next">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     TESTIMONIALS — dark, photo zoom
+════════════════════════════════ -->
+<section class="testy-sec" id="testimonials">
+  <div class="c">
+    <div class="testy-header">
+      <div class="lbl-dark">Parent Stories</div>
+      <h2 class="disp d3" style="color:#fff">What Arizona Families Say.</h2>
+      <p>Families across Arizona chose Unbound. Here's why.</p>
+    </div>
+    <div class="testy-grid">
+      <div class="testy-card">
+        <div class="testy-photo">
+          <img src="../unbound-new.webflow/images/Screenshot-2025-07-11-at-2.19.17-PM.png"
+               alt="Rochelle, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
+        </div>
+        <div class="testy-body">
+          <div class="testy-ql">"Our son trains five days a week and still thrives academically."</div>
+          <div class="testy-p">We're a sports family. At every other school, our son was constantly choosing between learning and doing what he loves. Unbound eliminated that choice entirely. He thrives academically AND athletically now.</div>
+          <div class="testy-by">Rochelle R. · Chandler, AZ</div>
+        </div>
+      </div>
+      <div class="testy-card">
+        <div class="testy-photo">
+          <img src="../unbound-new.webflow/images/Screenshot-2025-07-11-at-2.19.42-PM.png"
+               alt="Breanna, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
+        </div>
+        <div class="testy-body">
+          <div class="testy-ql">"Two hours of focused learning. The rest? Real life."</div>
+          <div class="testy-p">Our boys finish core academics in just two hours a day, then spend the rest on real-world skills. The small class sizes, supportive environment, and emphasis on life readiness made this a clear winner.</div>
+          <div class="testy-by">Breanna L. · Tucson, AZ</div>
+        </div>
+      </div>
+      <div class="testy-card">
+        <div class="testy-photo">
+          <img src="../unbound-new.webflow/images/Screenshot-2025-07-11-at-2.30.27-PM.png"
+               alt="Lauren, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
+        </div>
+        <div class="testy-body">
+          <div class="testy-ql">"The traditional education system is long overdue for a change."</div>
+          <div class="testy-p">As a parent who believes in AI and modern education, Unbound was an easy decision. We travel frequently, so the flexible approach is a perfect fit. The business and tech courses are crucial for my child's future.</div>
+          <div class="testy-by">Lauren S. · Mesa, AZ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FAQ — light
+════════════════════════════════ -->
+<section class="faq-sec" id="faq">
+  <div class="c">
+    <div class="faq-layout">
+      <div class="faq-intro">
+        <div class="lbl-light">FAQs</div>
+        <h2 class="disp d3">Common Questions.</h2>
+        <p>Can't find what you're looking for? <a href="https://unbound.school/contact">Contact us</a>. We reply same day.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this)">How does virtual school work? <span class="faq-arr">+</span></div>
+          <div class="faq-a">Unbound is a tuition-free virtual charter school where students master academics in two focused hours using AI-powered personalized tools, then spend their afternoons in hands-on clubs including business, STEM, arts, chess, debate, and more. Students are live on video with their teachers and classmates throughout the day. It's a real school, just redesigned from scratch.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Who is eligible to enroll? <span class="faq-arr">+</span></div>
+          <div class="faq-a">Students in grades 4–8 who reside in Arizona. Students must provide proof of identity (birth certificate or passport) and proof of Arizona residency (utility bill, lease agreement). All applicants are accepted. No test scores, transcripts, or essays required.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What does it cost? <span class="faq-arr">+</span></div>
+          <div class="faq-a">Nothing. Unbound Academy is a public charter school, fully funded by the state of Arizona. There are no enrollment fees, activity fees, technology fees, or any other charges. We also provide a laptop at no cost to every enrolled student.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What technology does my student need? <span class="faq-arr">+</span></div>
+          <div class="faq-a">Unbound provides a laptop at no cost to each enrolled student. You just need a reliable internet connection at home. All school-related software and platforms are provided and supported by the school. No extra purchases needed..</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do students socialize and make friends? <span class="faq-arr">+</span></div>
+          <div class="faq-a">Students are on video with each other throughout the day. They eat lunch together, play games during breaks, and collaborate in afternoon clubs daily. Families also gather in person every quarter at statewide events across Arizona. Small cohorts mean students genuinely get to know each other.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Is there homework? <span class="faq-arr">+</span></div>
+          <div class="faq-a">No. Students complete everything during school hours. The 2-hour academic model is designed to be efficient enough that nothing comes home. After 2 PM, your student's time is entirely their own.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How does Unbound support different learning needs? <span class="faq-arr">+</span></div>
+          <div class="faq-a">The AI platform adapts to every learner: gifted students, students who need extra support, and neurodivergent learners. It meets each student exactly where they are in every subject. We also support students with IEPs and 504 plans. Please mention your student's needs during enrollment.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How is this different from other online schools? <span class="faq-arr">+</span></div>
+          <div class="faq-a">Most virtual schools just move the traditional model online. Same 6-hour day, same passive lectures, same homework load. Unbound is built from the ground up. AI compresses academics into 2 focused hours, then the rest of the day is dedicated to real-world skills and community. Students learn more, stress less, and have time to actually be kids.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FINAL CTA — green
+════════════════════════════════ -->
+<section class="cta-sec">
+  <div class="c">
+    <div class="lbl-cta">Apply Today</div>
+    <h2 class="disp d2">It's Time to Find Out.</h2>
+    <p>Tuition-free for every eligible Arizona family in grades 4–8. No commitment to apply. Spots are limited each term.</p>
+    <button class="btn-dark" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Enroll Now. It's Free. →</button>
+    <p class="cta-note">Free · Arizona Grades 4–8 · Takes less than 2 minutes</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FOOTER — dark
+════════════════════════════════ -->
+<footer>
+  <div class="c">
+    <div class="foot-proof">
+      <div class="fp">Arizona Public Charter School</div>
+      <div class="fp">·</div>
+      <div class="fp">2.8× faster MAP Growth results</div>
+      <div class="fp">·</div>
+      <div class="fp">All applicants accepted</div>
+      <div class="fp">·</div>
+      <div class="fp">Laptop provided at no cost</div>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">Unbound<span>.</span></div>
+        <p class="foot-tag">Arizona's tuition-free virtual charter school for grades 4–8. Academics in 2 hours. Afternoons for what matters.</p>
+        <div class="foot-email">
+          <p>Get enrollment updates:</p>
+          <div class="foot-row">
+            <input type="email" placeholder="your@email.com" />
+            <button type="button" onclick="alert('Thank you! You\'re on the list.')">Subscribe</button>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/unboundacademy" class="soc" aria-label="Facebook">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/unboundacademy" class="soc" aria-label="Instagram">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@unboundacademy" class="soc" aria-label="YouTube">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>School</h4>
+        <a href="https://unbound.school/about-us">About Unbound</a>
+        <a href="https://unbound.school/admissions">Admissions</a>
+        <a href="https://unbound.school/program">Programs</a>
+        <a href="https://lu.ma/UnboundSchool" target="_blank">Events</a>
+      </div>
+      <div class="foot-col">
+        <h4>Families</h4>
+        <a href="https://unbound.school/contact">Contact Us</a>
+        <a href="#faq">FAQs</a>
+        <a href="#testimonials">Parent Stories</a>
+        <a href="#schedule">Daily Schedule</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="https://unbound.school/privacy-policy">Privacy Policy</a>
+        <a href="https://unbound.school/terms-of-service">Terms of Service</a>
+        <a href="https://unbound.school/school-safety">School Safety</a>
+        <a href="https://unbound.school/title-ix">Title IX</a>
+        <a href="https://unbound.school/compliance">Compliance</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div class="foot-copy">© 2025 Unbound Academy. All rights reserved. Unbound Academy is an Arizona state-chartered public school.</div>
+      <div class="foot-legal">
+        <a href="https://unbound.school/privacy-policy">Privacy</a>
+        <a href="https://unbound.school/terms-of-service">Terms</a>
+        <a href="https://unbound.school/title-ix">Title IX</a>
+        <a href="https://unbound.school/nondiscrimination-policy">Nondiscrimination</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <button onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Enroll Now. It's Free. →</button>
+</div>
+
+<script>
+// ── UTM capture ──────────────────────────────────
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
+    if (p.get(k)) localStorage.setItem('wf_' + k, p.get(k));
+  });
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
+    const el = document.getElementById('f_' + k);
+    const v  = localStorage.getItem('wf_' + k);
+    if (el && v) el.value = v;
+  });
+})();
+
+// ── HubSpot form ──────────────────────────────────
+// TODO: Replace 'YOUR_FORM_GUID_HERE' with Unbound HubSpot form GUID.
+// Find it: HubSpot → Marketing → Forms → [form] → Embed code.
+const HS_PORTAL    = '49211848';
+const HS_FORM      = 'YOUR_FORM_GUID_HERE';
+const ENROLLED_URL = 'https://unbound.school/thankyou';
+const DEFAULT_URL  = 'https://unbound.school/en-thankyou';
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = form.querySelector('.btn-submit');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+
+  const data  = Object.fromEntries(new FormData(form));
+  const grade = data.grade_eligibility || '';
+  const state = (data.state_code || '').toLowerCase();
+
+  const fields = [
+    { name:'firstname',        value:data.first_name },
+    { name:'lastname',         value:data.last_name  },
+    { name:'email',            value:data.email      },
+    { name:'phone',            value:data.phone      },
+    { name:'state_code',       value:data.state_code },
+    { name:'zip',              value:data.zip_code   },
+    { name:'grade_eligibility',value:grade           },
+  ];
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
+    const v = localStorage.getItem('wf_' + k) || data[k];
+    if (v) fields.push({ name:k, value:v });
+  });
+
+  if (HS_FORM !== 'YOUR_FORM_GUID_HERE') {
+    try {
+      await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM}`,
+        { method:'POST', headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({ fields, context:{ pageUri:location.href, pageName:document.title } }) }
+      );
+    } catch(err) { console.error('HubSpot:', err); }
+  }
+
+  if (typeof fbq !== 'undefined') fbq('track','Lead');
+
+  form.innerHTML = `
+    <div style="text-align:center;padding:32px 0">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3 style="font-family:'Coolvetica Condensed',sans-serif;font-size:28px;letter-spacing:.05em;text-transform:uppercase;color:#080808;margin-bottom:10px">You're on your way!</h3>
+      <p style="color:#999;font-size:14px;line-height:1.7">Redirecting you now…</p>
+    </div>`;
+
+  const url = (state === 'arizona' && grade === 'eligible') ? ENROLLED_URL : DEFAULT_URL;
+  setTimeout(() => { window.location.href = url; }, 1200);
+}
+
+// ── FAQ accordion ─────────────────────────────────
+function toggleFaq(qEl) { qEl.parentElement.classList.toggle('open'); }
+
+// ── Events carousel ───────────────────────────────
+(function() {
+  const carousel = document.getElementById('eventsCarousel');
+  const dots     = document.querySelectorAll('.carousel-dot');
+  const prev     = document.getElementById('carouselPrev');
+  const next     = document.getElementById('carouselNext');
+  if (!carousel) return;
+
+  function getCardWidth() {
+    const card = carousel.querySelector('.event-card');
+    return card ? card.offsetWidth + 20 : 360; // 20 = gap
+  }
+
+  function updateDots() {
+    const idx = Math.round(carousel.scrollLeft / getCardWidth());
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  next.addEventListener('click', () => carousel.scrollBy({ left: getCardWidth(), behavior:'smooth' }));
+  prev.addEventListener('click', () => carousel.scrollBy({ left: -getCardWidth(), behavior:'smooth' }));
+  carousel.addEventListener('scroll', updateDots);
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => carousel.scrollTo({ left: i * getCardWidth(), behavior:'smooth' }));
+  });
+})();
+
+// ── Image zoom on scroll (IntersectionObserver) ────
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .zoom-target { transform:scale(1.05); transition:transform 0s; }
+    .zoom-target.zoomed-in { transform:scale(1); transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+  `;
+  document.head.appendChild(style);
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('zoomed-in'); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.testy-photo img, .event-photo img').forEach(img => {
+    img.classList.add('zoom-target');
+    obs.observe(img);
+  });
+})();
+</script>
+</body>
+</html>
