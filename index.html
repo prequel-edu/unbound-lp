@@ -7,6 +7,9 @@
   <meta name="description" content="Unbound Academy is Arizona's tuition-free virtual public charter school for grades 4–8. Master academics in 2 hours. Afternoons for real-world skills. Apply free today." />
   <link rel="canonical" href="https://unbound.school/arizona-virtual-charter-school-grades-4-8" />
 
+  <!-- reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Le4-posAAAAAPNdbAh5ARrYsaN9WvfsmDXb3Wq1" async defer></script>
+
   <!-- GTM -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TXR4Q7DK');</script>
   <!-- FB Pixel -->
@@ -132,6 +135,7 @@
     .btn-submit{width:100%;padding:15px;font-family:'Coolvetica Condensed',sans-serif;font-size:17px;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--green);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
     .btn-submit:hover{opacity:.85}
     .form-trust{text-align:center;font-size:11px;color:#bbb;margin-top:10px}
+    .grecaptcha-badge{visibility:hidden!important}
 
     /* ── BENEFITS (light, 3 cards) ───────────────────────── */
     .benefits-sec{background:var(--white);padding:80px 0;border-bottom:1px solid var(--border-l)}
@@ -494,7 +498,7 @@
               </select>
             </div>
 
-            <p class="consent">By submitting, you agree to receive calls and texts from Unbound Academy about your enrollment. Reply STOP to opt out. <a href="https://unbound.school/privacy-policy">Privacy Policy</a>.</p>
+            <p class="consent">By submitting, you agree to receive calls and texts from Unbound Academy about your enrollment. Reply STOP to opt out. <a href="https://unbound.school/privacy-policy">Privacy Policy</a>. This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
             <button type="submit" class="btn-submit">Enroll Now →</button>
           </form>
           <p class="form-trust">🔒 Secure · No commitment · Arizona families</p>
@@ -990,12 +994,24 @@ const HS_PORTAL    = '49211848';
 const HS_FORM      = '92ec0262-98d4-4aa7-be7f-812ca5f0ec2f';
 const ENROLLED_URL = '/confirmed/';
 const DEFAULT_URL  = '/not-eligible/';
+const RC_SITE_KEY  = '6Le4-posAAAAAPNdbAh5ARrYsaN9WvfsmDXb3Wq1';
 
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const btn  = form.querySelector('.btn-submit');
   btn.textContent = 'Sending…'; btn.disabled = true;
+
+  // reCAPTCHA v3 — get token before submitting
+  let rcToken = '';
+  try {
+    rcToken = await new Promise((resolve, reject) => {
+      if (typeof grecaptcha === 'undefined') { resolve(''); return; }
+      grecaptcha.ready(() => {
+        grecaptcha.execute(RC_SITE_KEY, { action: 'submit' }).then(resolve).catch(reject);
+      });
+    });
+  } catch(err) { console.warn('reCAPTCHA:', err); }
 
   const data  = Object.fromEntries(new FormData(form));
   const grade = data.grade_eligibility || '';
@@ -1014,6 +1030,7 @@ async function handleSubmit(e) {
     const v = localStorage.getItem('wf_' + k) || data[k];
     if (v) fields.push({ name:k, value:v });
   });
+  if (rcToken) fields.push({ name:'recaptcha_token', value:rcToken });
 
   if (HS_FORM !== 'YOUR_FORM_GUID_HERE') {
     try {
