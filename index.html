@@ -1020,8 +1020,13 @@ function toggleMute() {
   const lbl = document.getElementById('muteLbl');
   const muteIcon = document.getElementById('muteIcon');
   const unmuteIcon = document.getElementById('unmuteIcon');
-  vid.muted = !vid.muted;
-  vid.play();
+  if (vid.muted) {
+    vid.volume = 1;
+    vid.muted = false;
+  } else {
+    vid.muted = true;
+  }
+  vid.play().catch(function(){});
   lbl.textContent = vid.muted ? 'Unmute' : 'Mute';
   muteIcon.style.display = vid.muted ? '' : 'none';
   unmuteIcon.style.display = vid.muted ? 'none' : '';
