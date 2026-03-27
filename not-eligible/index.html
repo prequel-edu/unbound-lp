@@ -12,7 +12,7 @@
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2911764312318379');fbq('track','PageView');</script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2911764312318379&ev=PageView&noscript=1"/></noscript>
 
-  <!-- UTM passthrough → dataLayer -->
+  <!-- UTM passthrough + page event -->
   <script>
   (function() {
     var p = new URLSearchParams(window.location.search);
@@ -23,56 +23,201 @@
       if (v) utms[k] = v;
     });
     window.dataLayer = window.dataLayer || [];
-    if (Object.keys(utms).length) {
-      window.dataLayer.push(Object.assign({ event: 'utm_data' }, utms));
-    }
+    if (Object.keys(utms).length) window.dataLayer.push(Object.assign({ event: 'utm_data' }, utms));
     window.dataLayer.push({ event: 'enrollment_not_eligible' });
   })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root { --dark:#111827; --green:#059669; --green2:#10B981; --cream:#F0FDF4; --muted:#6B7280; --border:#E5E7EB; }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #F9FAFB; color: var(--dark); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; }
-    .card { background: #fff; border-radius: 16px; padding: 56px 48px; max-width: 560px; width: 100%; text-align: center; box-shadow: 0 4px 32px rgba(0,0,0,.08); }
-    .icon { width: 72px; height: 72px; background: #F9FAFB; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-size: 36px; }
-    .label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
-    h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px; }
-    p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
-    .info-box { background: var(--cream); border: 1px solid #D1FAE5; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; text-align: left; }
-    .info-box h3 { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
-    .info-box p { font-size: 14px; color: var(--dark); margin-bottom: 0; line-height: 1.65; }
-    .btn { display: inline-block; padding: 14px 36px; background: var(--green); color: #fff; font-weight: 600; font-size: 15px; border-radius: 8px; text-decoration: none; transition: opacity .2s; margin-bottom: 12px; }
-    .btn:hover { opacity: .88; }
-    .btn-secondary { display: inline-block; padding: 12px 28px; background: transparent; color: var(--green); font-weight: 600; font-size: 14px; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--green); transition: all .2s; }
-    .btn-secondary:hover { background: var(--cream); }
-    .actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .trust { font-size: 12px; color: #aaa; margin-top: 20px; }
+    @font-face { font-family:'Satoshi'; src:url('../fonts/Satoshi-Variable.ttf') format('truetype'); font-weight:300 900; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Coolvetica Condensed'; src:url('../fonts/coolvetica-condensed-rg.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#080808; --b2:#111111; --b3:#1a1a1a;
+      --green:#ceff65;
+      --ink:#f0f0f0; --ink3:#888;
+      --border-d:#222222;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Satoshi',sans-serif;background:var(--black);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+
+    /* Nav */
+    nav{background:var(--black);border-bottom:1px solid var(--border-d);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;max-width:1160px;margin:0 auto}
+    .nav-logo{font-family:'Coolvetica Condensed',sans-serif;font-size:22px;letter-spacing:.05em;text-transform:uppercase;color:#fff}
+    .nav-logo span{color:var(--green)}
+    .nav-link{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#666;transition:color .2s}
+    .nav-link:hover{color:#fff}
+
+    /* Layout */
+    .page{max-width:1160px;margin:0 auto;padding:80px 28px 120px}
+
+    /* Hero */
+    .hero-lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+    .hero-lbl::before{content:'';display:inline-block;width:20px;height:2px;background:#888}
+    h1{font-family:'Coolvetica Condensed',sans-serif;font-size:clamp(52px,8vw,100px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;line-height:1;margin-bottom:24px}
+    h1 span{color:var(--green)}
+    .hero-sub{font-size:18px;color:var(--ink3);line-height:1.75;max-width:600px;margin-bottom:48px}
+
+    /* Info card */
+    .info-card{background:var(--b2);border:1px solid var(--border-d);border-radius:10px;padding:32px 36px;max-width:680px;margin-bottom:48px}
+    .info-card-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+    .info-card p{font-size:15px;color:var(--ink3);line-height:1.75}
+    .info-card strong{color:var(--ink)}
+
+    /* Alt option card */
+    .alt-card{background:var(--b3);border:1px solid var(--border-d);border-radius:10px;padding:28px 32px;max-width:680px;margin-bottom:20px;display:flex;align-items:flex-start;gap:20px}
+    .alt-card-icon{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
+    .alt-card-body h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:.02em}
+    .alt-card-body p{font-size:13px;color:var(--ink3);line-height:1.65;margin-bottom:10px}
+    .alt-link{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:6px;transition:opacity .2s}
+    .alt-link:hover{opacity:.75}
+
+    /* CTA */
+    .cta-wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:48px}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:'Coolvetica Condensed',sans-serif;font-size:17px;letter-spacing:.1em;text-transform:uppercase;padding:16px 36px;background:var(--green);color:var(--black);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+    .btn-primary:hover{opacity:.88}
+    .btn-ghost{font-size:13px;color:var(--ink3);border-bottom:1px solid #333;padding-bottom:2px;transition:color .2s}
+    .btn-ghost:hover{color:#fff}
+
+    /* Hidden by default — JS reveals the right one */
+    .variant{display:none}
+
+    @media(max-width:700px){
+      h1{font-size:clamp(44px,12vw,72px)}
+      .alt-card{flex-direction:column;gap:12px}
+    }
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXR4Q7DK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <div class="card">
-    <div class="icon">📬</div>
-    <div class="label">Thanks for Reaching Out</div>
-    <h1>We got your info.</h1>
-    <p>Unbound Academy is currently a tuition-free public charter school available to Arizona residents in grades 4–8. Based on what you shared, you may not be eligible right now — but we'd still love to stay in touch.</p>
-
-    <div class="info-box">
-      <h3>Current eligibility</h3>
-      <p>Unbound Academy is open to students in <strong>grades 4–8</strong> who are <strong>Arizona residents</strong>. We are actively working to expand to additional states. We'll notify you as soon as enrollment opens in your area or grade.</p>
-    </div>
-
-    <div class="actions">
-      <a href="https://unbound.school" class="btn">Learn More About Unbound →</a>
-      <a href="/" class="btn-secondary">Back to the page</a>
-    </div>
-    <p class="trust">Questions? Email <a href="mailto:enrollment@unbound.school" style="color:var(--green)">enrollment@unbound.school</a></p>
+  <div style="background:var(--black);border-bottom:1px solid var(--border-d)">
+    <nav>
+      <a href="https://unbound.school" class="nav-logo">Unbound<span>.</span></a>
+      <a href="https://unbound.school" class="nav-link">Back to Main Site</a>
+    </nav>
   </div>
+
+  <div class="page">
+    <div class="hero-lbl">We Got Your Info</div>
+
+    <!-- VARIANT A: Out of state, eligible grade -->
+    <div class="variant" id="v-out-of-state">
+      <h1>Not in<br><span>Arizona?</span></h1>
+      <p class="hero-sub">Unbound Academy is currently open to Arizona families. But if you're outside Arizona, we've got something for you — Novatio School offers the same model nationwide.</p>
+
+      <div class="info-card">
+        <div class="info-card-label">About Unbound Academy</div>
+        <p>Unbound Academy is a <strong>tuition-free public charter school</strong> available to Arizona residents in <strong>grades 4–8</strong>. We're actively working to expand to additional states — we'll let you know as soon as enrollment opens in your area.</p>
+      </div>
+
+      <div class="alt-card">
+        <div class="alt-card-icon">🌎</div>
+        <div class="alt-card-body">
+          <h3>Novatio School — Available Nationwide</h3>
+          <p>Novatio School offers the same 2-hour focused learning model, available to families across the U.S. Grades 4–8. Real-world skills. Afternoons free.</p>
+          <a href="https://novatio.school" class="alt-link">Learn About Novatio <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="cta-wrap">
+        <a href="https://unbound.school" class="btn-primary">
+          Learn More About Unbound
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="/" class="btn-ghost">Back to the page</a>
+      </div>
+    </div>
+
+    <!-- VARIANT B: Too young -->
+    <div class="variant" id="v-too-young">
+      <h1>Almost<br><span>there.</span></h1>
+      <p class="hero-sub">Unbound Academy is for students in grades 4–8. It sounds like your child isn't quite there yet — but we'd love to stay in touch and make sure you're ready when the time comes.</p>
+
+      <div class="info-card">
+        <div class="info-card-label">Current Eligibility</div>
+        <p>Unbound Academy is open to students in <strong>grades 4–8</strong> who are <strong>Arizona residents</strong>. When your child reaches 4th grade, they'll be eligible to enroll — tuition-free. We'll keep you on our list so you hear from us first.</p>
+      </div>
+
+      <div class="cta-wrap">
+        <a href="https://unbound.school" class="btn-primary">
+          Learn More About Unbound
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="/" class="btn-ghost">Back to the page</a>
+      </div>
+    </div>
+
+    <!-- VARIANT C: Too old (9th grade+) -->
+    <div class="variant" id="v-too-old">
+      <h1>Beyond<br><span>grade 8?</span></h1>
+      <p class="hero-sub">Unbound Academy currently serves grades 4–8. For high schoolers, Prequel is built for exactly that — ambitious teens who want to learn differently.</p>
+
+      <div class="info-card">
+        <div class="info-card-label">Current Eligibility</div>
+        <p>Unbound Academy is open to students in <strong>grades 4–8</strong> who are <strong>Arizona residents</strong>. If your student is in 9th grade or above, Unbound isn't the right fit right now — but Prequel might be.</p>
+      </div>
+
+      <div class="alt-card">
+        <div class="alt-card-icon">🚀</div>
+        <div class="alt-card-body">
+          <h3>Prequel — For High Schoolers</h3>
+          <p>Prequel is a program designed for teens in grades 9–12 who want to learn real-world skills, build businesses, and chart their own path. Same philosophy, built for older students.</p>
+          <a href="https://joinprequel.com" class="alt-link">Check Out Prequel <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="cta-wrap">
+        <a href="https://unbound.school" class="btn-primary">
+          Learn More About Unbound
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="/" class="btn-ghost">Back to the page</a>
+      </div>
+    </div>
+
+    <!-- VARIANT D: Fallback (unknown reason) -->
+    <div class="variant" id="v-default">
+      <h1>Thanks for<br><span>reaching out.</span></h1>
+      <p class="hero-sub">Unbound Academy is a tuition-free public charter school for Arizona students in grades 4–8. Based on what you shared, you may not be eligible right now — but we'd love to stay in touch.</p>
+
+      <div class="info-card">
+        <div class="info-card-label">Current Eligibility</div>
+        <p>Unbound Academy is open to students in <strong>grades 4–8</strong> who are <strong>Arizona residents</strong>. We're working to expand — we'll notify you as soon as enrollment opens for your situation.</p>
+      </div>
+
+      <div class="cta-wrap">
+        <a href="https://unbound.school" class="btn-primary">
+          Learn More About Unbound
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="/" class="btn-ghost">Back to the page</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var p = new URLSearchParams(window.location.search);
+    var grade = p.get('grade') || '';
+    var state = p.get('state') || '';
+
+    var variantId;
+    if (state && state.toLowerCase() !== 'arizona') {
+      variantId = 'v-out-of-state';
+    } else if (grade === 'younger') {
+      variantId = 'v-too-young';
+    } else if (grade === 'older') {
+      variantId = 'v-too-old';
+    } else {
+      variantId = 'v-default';
+    }
+
+    var el = document.getElementById(variantId);
+    if (el) el.style.display = 'block';
+  })();
+  </script>
 </body>
 </html>
