@@ -1006,7 +1006,11 @@ async function handleSubmit(e) {
       <p style="color:#999;font-size:14px;line-height:1.7">Redirecting you now…</p>
     </div>`;
 
-  const url = (state === 'arizona' && grade === 'eligible') ? ENROLLED_URL : DEFAULT_URL;
+  const utmStr = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+    .map(k => { const v = localStorage.getItem('wf_'+k)||data[k]; return v ? k+'='+encodeURIComponent(v) : null; })
+    .filter(Boolean).join('&');
+  const base = (state === 'arizona' && grade === 'eligible') ? ENROLLED_URL : DEFAULT_URL;
+  const url  = utmStr ? base + '?' + utmStr : base;
   setTimeout(() => { window.location.href = url; }, 1200);
 }
 
