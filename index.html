@@ -1087,7 +1087,7 @@ function toggleFaq(qEl) { qEl.parentElement.classList.toggle('open'); }
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('zoomed-in'); });
   }, { threshold: 0.15 });
 
-  document.querySelectorAll('.testy-photo img, .event-photo img').forEach(img => {
+  document.querySelectorAll('.testy-photo img').forEach(img => {
     img.classList.add('zoom-target');
     obs.observe(img);
   });
