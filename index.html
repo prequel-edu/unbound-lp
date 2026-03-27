@@ -491,8 +491,8 @@
               <select name="grade_eligibility" required>
                 <option value="">Which best describes your child(ren)?</option>
                 <option value="eligible">At least one of my children is currently in Grade 4 to Grade 8</option>
-                <option value="All of my children are in Grade 3 or under, but I'd like to learn more">All of my children are in Grade 3 or under, but I'd like to learn more</option>
-                <option value="All of my children are in Grade 9 or above, but I'd like to learn more">All of my children are in Grade 9 or above, but I'd like to learn more</option>
+                <option value="younger">All of my children are in Grade 3 or under, but I'd like to learn more</option>
+                <option value="older">All of my children are in Grade 9 or above, but I'd like to learn more</option>
               </select>
             </div>
 
@@ -959,9 +959,9 @@
 // TODO: Replace 'YOUR_FORM_GUID_HERE' with Unbound HubSpot form GUID.
 // Find it: HubSpot → Marketing → Forms → [form] → Embed code.
 const HS_PORTAL    = '49211848';
-const HS_FORM      = 'YOUR_FORM_GUID_HERE';
-const ENROLLED_URL = 'https://unbound.school/thankyou';
-const DEFAULT_URL  = 'https://unbound.school/en-thankyou';
+const HS_FORM      = '92ec0262-98d4-4aa7-be7f-812ca5f0ec2f';
+const ENROLLED_URL = '/confirmed/';
+const DEFAULT_URL  = '/not-eligible/';
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -978,7 +978,7 @@ async function handleSubmit(e) {
     { name:'lastname',         value:data.last_name  },
     { name:'email',            value:data.email      },
     { name:'phone',            value:data.phone      },
-    { name:'state_code',       value:data.state_code },
+    { name:'hs_state_code',    value:data.state_code },
     { name:'zip',              value:data.zip_code   },
     { name:'grade_eligibility',value:grade           },
   ];

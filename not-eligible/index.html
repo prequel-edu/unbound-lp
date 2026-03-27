@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanks for Your Interest — Unbound Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --dark:#111827; --green:#059669; --green2:#10B981; --cream:#F0FDF4; --muted:#6B7280; --border:#E5E7EB; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #F9FAFB; color: var(--dark); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; }
+    .card { background: #fff; border-radius: 16px; padding: 56px 48px; max-width: 560px; width: 100%; text-align: center; box-shadow: 0 4px 32px rgba(0,0,0,.08); }
+    .icon { width: 72px; height: 72px; background: #F9FAFB; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-size: 36px; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px; }
+    p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+    .info-box { background: var(--cream); border: 1px solid #D1FAE5; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; text-align: left; }
+    .info-box h3 { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .info-box p { font-size: 14px; color: var(--dark); margin-bottom: 0; line-height: 1.65; }
+    .btn { display: inline-block; padding: 14px 36px; background: var(--green); color: #fff; font-weight: 600; font-size: 15px; border-radius: 8px; text-decoration: none; transition: opacity .2s; margin-bottom: 12px; }
+    .btn:hover { opacity: .88; }
+    .btn-secondary { display: inline-block; padding: 12px 28px; background: transparent; color: var(--green); font-weight: 600; font-size: 14px; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--green); transition: all .2s; }
+    .btn-secondary:hover { background: var(--cream); }
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .trust { font-size: 12px; color: #aaa; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">📬</div>
+    <div class="label">Thanks for Reaching Out</div>
+    <h1>We got your info.</h1>
+    <p>Unbound Academy is currently a tuition-free public charter school available to Arizona residents in grades 4–8. Based on what you shared, you may not be eligible right now — but we'd still love to stay in touch.</p>
+
+    <div class="info-box">
+      <h3>Current eligibility</h3>
+      <p>Unbound Academy is open to students in <strong>grades 4–8</strong> who are <strong>Arizona residents</strong>. We are actively working to expand to additional states. We'll notify you as soon as enrollment opens in your area or grade.</p>
+    </div>
+
+    <div class="actions">
+      <a href="https://unbound.school" class="btn">Learn More About Unbound →</a>
+      <a href="/" class="btn-secondary">Back to the LP</a>
+    </div>
+    <p class="trust">Questions? Email <a href="mailto:enrollment@unbound.school" style="color:var(--green)">enrollment@unbound.school</a></p>
+  </div>
+</body>
+</html>
