@@ -1042,8 +1042,8 @@ function toggleFaq(qEl) { qEl.parentElement.classList.toggle('open'); }
 (function() {
   const style = document.createElement('style');
   style.textContent = `
-    .zoom-target { transform:scale(1.05); transition:transform 0s; }
-    .zoom-target.zoomed-in { transform:scale(1); transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .zoom-target { transform:scale(1); transition:transform 0s; }
+    .zoom-target.zoomed-in { transform:scale(1.05); transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
   `;
   document.head.appendChild(style);
 
