@@ -103,7 +103,7 @@
     <div class="hero-lbl">Application Inquiry</div>
     <h1>You're<br><span>on your way.</span></h1>
     <p class="hero-sub">We received your enrollment interest. Our team will be in touch soon. Here's what happens next.</p>
-    <p style="margin-top:-36px;margin-bottom:56px"><a href="https://apply.unbound.school" style="font-size:14px;font-weight:700;color:var(--green);border-bottom:1px solid rgba(206,255,101,.3);padding-bottom:2px">Ready to apply now? Start your application →</a></p>
+    <p style="margin-top:-36px;margin-bottom:56px"><a id="apply-link-inline" href="https://apply.unbound.school" style="font-size:14px;font-weight:700;color:var(--green);border-bottom:1px solid rgba(206,255,101,.3);padding-bottom:2px">Ready to apply now? Start your application →</a></p>
 
     <div class="steps-lbl">What to expect</div>
     <div class="steps">
@@ -130,7 +130,7 @@
     </div>
 
     <div class="cta-wrap">
-      <a href="https://apply.unbound.school" class="btn-primary">
+      <a id="apply-link-btn" href="https://apply.unbound.school" class="btn-primary">
         Start Your Application
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
@@ -141,6 +141,21 @@
   <script>
   // fbq CompleteRegistration (post-load fallback)
   if (typeof fbq !== 'undefined') fbq('track', 'CompleteRegistration');
+
+  // ── Pass lead data to application ────────────────
+  (function() {
+    const p = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams();
+    ['first_name','last_name','email','phone','state_code','grade_eligibility'].forEach(k => {
+      const v = p.get(k);
+      if (v) params.append(k, v);
+    });
+    const qs = params.toString();
+    if (!qs) return;
+    const base = 'https://apply.unbound.school/?' + qs;
+    document.getElementById('apply-link-inline').href = base;
+    document.getElementById('apply-link-btn').href = base;
+  })();
   </script>
 </body>
 </html>
