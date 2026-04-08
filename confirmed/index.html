@@ -124,6 +124,25 @@
       </div>
     </div>
 
+    <!-- Podcast -->
+    <div style="margin-bottom:56px">
+      <div style="margin-bottom:22px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:20px;height:2px;background:var(--green)"></span>While You Wait</div>
+        <p style="font-size:18px;font-weight:600;color:#fff;margin-bottom:6px">Hear from real Unbound families.</p>
+        <p style="font-size:14px;color:var(--ink3);line-height:1.7">Sarah and Mike share what Unbound actually looks like day-to-day — academics, afternoons, and why they switched.</p>
+      </div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;border:1px solid var(--border-d);max-width:760px">
+        <iframe
+          id="podcastConfirmed"
+          src="https://www.youtube.com/embed/mnkIU4lSkUU?rel=0&modestbranding=1&enablejsapi=1"
+          style="position:absolute;inset:0;width:100%;height:100%;border:none"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          title="Unbound Academy Parent Stories"
+        ></iframe>
+      </div>
+    </div>
+
     <div class="quote-wrap">
       <p class="quote-text">"Two hours of focused learning. The rest? Real life. Our boys finish core academics in just two hours a day."</p>
       <div class="quote-by">Breanna L., Unbound Mom · Tucson, AZ</div>
@@ -137,6 +156,53 @@
       <a href="https://luma.com/UnboundSchool" class="btn-ghost">Attend an open house session</a>
     </div>
   </div>
+
+  <!-- YouTube IFrame API — video tracking for GTM -->
+  <script>
+  (function() {
+    // Load YouTube IFrame API
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+
+    var player;
+    var fired = { 25: false, 50: false, 75: false, 100: false };
+    var pollInterval;
+
+    window.onYouTubeIframeAPIReady = function() {
+      player = new YT.Player('podcastConfirmed', {
+        events: {
+          onStateChange: function(e) {
+            window.dataLayer = window.dataLayer || [];
+            if (e.data === YT.PlayerState.PLAYING) {
+              dataLayer.push({ event: 'video_start', video_title: 'Unbound Parent Stories Podcast', video_provider: 'youtube' });
+              pollInterval = setInterval(function() {
+                if (!player || typeof player.getDuration !== 'function') return;
+                var dur = player.getDuration();
+                if (!dur) return;
+                var pct = Math.floor((player.getCurrentTime() / dur) * 100);
+                [25, 50, 75].forEach(function(m) {
+                  if (!fired[m] && pct >= m) {
+                    fired[m] = true;
+                    dataLayer.push({ event: 'video_progress', video_percent: m, video_title: 'Unbound Parent Stories Podcast', video_provider: 'youtube' });
+                  }
+                });
+              }, 1000);
+            } else if (e.data === YT.PlayerState.ENDED) {
+              clearInterval(pollInterval);
+              if (!fired[100]) {
+                fired[100] = true;
+                dataLayer.push({ event: 'video_complete', video_title: 'Unbound Parent Stories Podcast', video_provider: 'youtube' });
+              }
+            } else if (e.data === YT.PlayerState.PAUSED) {
+              clearInterval(pollInterval);
+            }
+          }
+        }
+      });
+    };
+  })();
+  </script>
 
   <script>
   // fbq CompleteRegistration (post-load fallback)

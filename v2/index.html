@@ -17,8 +17,8 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2911764312318379&ev=PageView&noscript=1"/></noscript>
 
   <style>
-    @font-face { font-family:'Satoshi'; src:url('fonts/Satoshi-Variable.ttf') format('truetype'); font-weight:300 900; font-style:normal; font-display:swap; }
-    @font-face { font-family:'Coolvetica Condensed'; src:url('fonts/coolvetica-condensed-rg.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Satoshi'; src:url('../fonts/Satoshi-Variable.ttf') format('truetype'); font-weight:300 900; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Coolvetica Condensed'; src:url('../fonts/coolvetica-condensed-rg.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
   </style>
 
   <style>
@@ -366,16 +366,11 @@
 </nav>
 
 <!-- ════════════════════════════════
-     HERO — dark, video bg
+     HERO — dark, trailer (Variant B)
 ════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-vid">
-    <video autoplay muted loop playsinline>
-      <source src="videos/prequel-transcode.mp4" type="video/mp4">
-    </video>
-  </div>
+<section class="hero" style="min-height:auto;padding-bottom:0">
   <div class="c">
-    <div class="hero-body">
+    <div class="hero-body" style="padding-bottom:48px">
       <div class="hero-eyebrow">Arizona · Grades 4–8 · Tuition-Free Charter School</div>
 
       <h1 class="disp d1">Academics in 2 Hours.</h1>
@@ -400,6 +395,25 @@
     </div>
   </div>
 </section>
+
+<!-- ════════════════════════════════
+     HERO TRAILER — Variant B
+════════════════════════════════ -->
+<div style="background:var(--black);padding:0 0 64px">
+  <div class="c">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;border:1px solid var(--border-d)">
+      <iframe
+        id="heroTrailer"
+        src="https://www.youtube.com/embed/GWyFKMKd16k?rel=0&modestbranding=1&color=white&enablejsapi=1"
+        style="position:absolute;inset:0;width:100%;height:100%;border:none"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        title="Unbound Academy — A Different Kind of School"
+      ></iframe>
+    </div>
+    <p style="text-align:center;font-size:11px;color:#444;margin-top:12px;letter-spacing:.1em;text-transform:uppercase">Watch — Unbound Academy</p>
+  </div>
+</div>
 
 <!-- ════════════════════════════════
      PRESS STRIP — dark
@@ -760,7 +774,7 @@
         <!-- Event 1 -->
         <div class="event-card">
           <div class="event-photo">
-            <img src="photos/spring-training.png" alt="Spring Training event" />
+            <img src="../photos/spring-training.png" alt="Spring Training event" />
           </div>
           <div class="event-body">
             <div class="event-name">Spring Training</div>
@@ -771,7 +785,7 @@
         <!-- Event 2 -->
         <div class="event-card">
           <div class="event-photo">
-            <img src="photos/top-golf.png" alt="Top Golf outing" />
+            <img src="../photos/top-golf.png" alt="Top Golf outing" />
           </div>
           <div class="event-body">
             <div class="event-name">Top Golf</div>
@@ -782,7 +796,7 @@
         <!-- Event 3 -->
         <div class="event-card">
           <div class="event-photo">
-            <img src="photos/cardinal-civic-matters-summit.png" alt="Cardinal Civic Matters Summit" />
+            <img src="../photos/cardinal-civic-matters-summit.png" alt="Cardinal Civic Matters Summit" />
           </div>
           <div class="event-body">
             <div class="event-name">Cardinal Civic Matters Summit</div>
@@ -793,7 +807,7 @@
         <!-- Event 4 -->
         <div class="event-card">
           <div class="event-photo">
-            <img src="photos/chickenn-pickle.png" alt="Chicken N Pickle" />
+            <img src="../photos/chickenn-pickle.png" alt="Chicken N Pickle" />
           </div>
           <div class="event-body">
             <div class="event-name">Chicken N Pickle</div>
@@ -835,7 +849,7 @@
     <div class="testy-grid" id="testyGrid">
       <div class="testy-card">
         <div class="testy-photo">
-          <img src="images/Screenshot-2025-07-11-at-2.19.17-PM.png"
+          <img src="../images/Screenshot-2025-07-11-at-2.19.17-PM.png"
                alt="Rochelle, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
         </div>
         <div class="testy-body">
@@ -846,7 +860,7 @@
       </div>
       <div class="testy-card">
         <div class="testy-photo">
-          <img src="images/Screenshot-2025-07-11-at-2.19.42-PM.png"
+          <img src="../images/Screenshot-2025-07-11-at-2.19.42-PM.png"
                alt="Breanna, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
         </div>
         <div class="testy-body">
@@ -857,7 +871,7 @@
       </div>
       <div class="testy-card">
         <div class="testy-photo">
-          <img src="images/Screenshot-2025-07-11-at-2.30.27-PM.png"
+          <img src="../images/Screenshot-2025-07-11-at-2.30.27-PM.png"
                alt="Lauren, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
         </div>
         <div class="testy-body">
