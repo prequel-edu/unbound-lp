@@ -487,7 +487,7 @@
               <div class="fg"><label>Last Name *</label><input type="text" name="last_name" placeholder="Last name" required /></div>
             </div>
             <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="parent@example.com" required /></div>
-            <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 000-0000" required /></div>
+            <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 000-0000" inputmode="tel" required /><span class="fg-error" data-for="phone" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
             <div class="frow">
               <div class="fg">
                 <label>State *</label>
@@ -1084,6 +1084,21 @@ const RC_SITE_KEY  = '6Le4-posAAAAAPNdbAh5ARrYsaN9WvfsmDXb3Wq1';
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
+
+  // Phone validation — require ≥10 digits to prevent SalesMsg silent failures
+  const phoneEl = form.querySelector('input[name="phone"]');
+  const phoneDigits = (phoneEl?.value || '').replace(/\D/g, '');
+  const phoneErrEl = form.querySelector('.fg-error[data-for="phone"]');
+  if (phoneDigits.length < 10) {
+    if (phoneErrEl) {
+      phoneErrEl.textContent = 'Please enter a valid 10-digit phone number';
+      phoneErrEl.style.display = 'block';
+    }
+    phoneEl?.focus();
+    return;
+  }
+  if (phoneErrEl) phoneErrEl.style.display = 'none';
+
   const btn  = form.querySelector('.btn-submit');
   btn.textContent = 'Sending…'; btn.disabled = true;
 
