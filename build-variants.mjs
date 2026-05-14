@@ -8,55 +8,30 @@ import path from "node:path";
 const SRC = "/tmp/unbound-lp/index.html";
 const baseHtml = fs.readFileSync(SRC, "utf8");
 
-// Trailer section (HC + LS only). Inserted right after the hero, before press strip.
-const TRAILER_SECTION = `
-<!-- ════════════════════════════════
-     TRAILER — variant-specific (HC + LS)
-════════════════════════════════ -->
-<section style="background:var(--black);padding:48px 0 64px;border-bottom:1px solid var(--border-d)">
-  <div class="c">
-    <div style="max-width:920px;margin:0 auto">
-      <div class="lbl-dark" style="display:flex;justify-content:center;color:var(--green);margin-bottom:14px">Watch</div>
-      <h2 class="disp d3" style="color:#fff;text-align:center;margin-bottom:24px">A real look inside Unbound.</h2>
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;border:1px solid #222">
-        <iframe
-          src="https://www.youtube.com/embed/GWyFKMKd16k?rel=0&modestbranding=1&color=white"
-          style="position:absolute;inset:0;width:100%;height:100%;border:none"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          title="Unbound Academy — A Real Look Inside"
-        ></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-`;
-
 const VARIANTS = {
   "human-centric": {
     lp_variant: "human_centric",
-    title: "Unbound Academy — Real Teachers. Real Time. 2 Hours a Day.",
-    meta_description: "Real Arizona-certified teachers, 1:1 attention, 2-Hour Learning model. Tuition-free virtual charter school for grades 4–8.",
+    title: "Unbound Academy — Real Teachers. Real Time.",
+    meta_description: "Real Arizona-certified teachers, daily 1:1 check-ins, live class time. Tuition-free virtual charter school for grades 4–8.",
     hero_eyebrow: "Arizona · Grades 4–8 · Tuition-Free Charter School",
-    hero_h1_a: "Real teachers. Real time.",
-    hero_h1_b: "2 hours a day.",
+    // Single-line hero with inline green accent on "Real time."
+    hero_h1_html: `<h1 class="disp d1">Real teachers. <span style="color:var(--green)">Real time.</span></h1>`,
     hero_sub: "At Unbound Academy, your child is <strong>known, supported, and taught by real Arizona-certified teachers</strong> who meet with them every day. Our 2-Hour Learning model blends human connection with smart AI tools — freeing teachers to give more 1:1 attention and helping students learn faster, not lonelier.",
-    cta_hero: "See If We're a Fit",
-    cta_sticky: "Start Your Application →",
+    cta_hero: "Enroll Now",
+    cta_sticky: "Enroll Now →",
     cta_final_label: "Apply Today",
-    cta_final_btn: "Reserve Your Spot →",
-    include_trailer: false,
-    form_h2_word: "small-cohort learning",
-    form_pitch: "Real Arizona-certified teachers, on screen with your child every day. Small cohorts mean your child is known — not lost. See if Unbound is the right fit for your family.",
+    cta_final_btn: "Enroll Now →",
+    form_h2_word: "live-teacher learning",
+    form_pitch: "Real Arizona-certified teachers, on screen with your child every day. Live class time, daily 1:1 check-ins, and real academic help when they get stuck. See if Unbound is the right fit for your family.",
     form_quote_text: "When my mom brought it up to me first, I was hesitant because I didn't want to start over. But once I started, I realized this is a school for me.",
     form_quote_by: "Elijah, Unbound student",
     axis_spotlight_eyebrow: "Inside a Day at Unbound",
     axis_spotlight_h2: "Your child is never alone.",
-    axis_spotlight_body: "Unbound is the most interactive virtual school with high levels of teacher-student engagement. Live class sessions, daily 1:1 teacher check-ins, small cohorts where students actually know each other — and where every teacher is Arizona-certified.",
+    axis_spotlight_body: "Unbound is the most interactive virtual school with high levels of teacher-student engagement. Live class sessions, daily 1:1 teacher check-ins, real academic help when students get stuck, and every teacher is Arizona-certified.",
     axis_spotlight_pull_quote: "My child went from struggling to thriving in just a few months.",
-    axis_spotlight_pull_quote_by: "Unbound Academy parent · Ad 50U",
+    axis_spotlight_pull_quote_by: "Unbound Academy parent",
     final_cta_h2: "Let's See If Unbound's the Right Fit.",
-    final_cta_p: "Real teachers. Real time. A school that treats your child like a person, not a number. Start with a quick fit check.",
+    final_cta_p: "Real teachers. Real time. A school that treats your child like a person, not a number.",
     testy_order: ["rochelle","breanna","lauren"],
   },
   "ai-driven": {
@@ -64,14 +39,13 @@ const VARIANTS = {
     title: "Unbound Academy — AI-Powered Learning. Real Teachers at the Center.",
     meta_description: "Arizona's most advanced AI-powered tuition-free charter school for grades 4–8. Real teachers + personalized AI tutoring. 2.8× faster learning measured by MAP.",
     hero_eyebrow: "Arizona · Grades 4–8 · Tuition-Free Charter School",
-    hero_h1_a: "AI-powered learning.",
-    hero_h1_b: "Real teachers at the center.",
+    hero_h1_html: `<h1 class="disp d1">AI-powered learning.</h1>
+      <h1 class="disp d1" style="color:var(--green)">Real teachers at the center.</h1>`,
     hero_sub: "Unbound Academy uses <strong>advanced AI to tailor every lesson</strong> while teachers lead, guide, and mentor daily. Students finish academics in 2 hours, then join live workshops with peers to build skills for the real world.",
-    cta_hero: "See How It Works",
-    cta_sticky: "Learn More →",
+    cta_hero: "Enroll Now",
+    cta_sticky: "Enroll Now →",
     cta_final_label: "Get Started",
-    cta_final_btn: "Apply Today →",
-    include_trailer: false,
+    cta_final_btn: "Enroll Now →",
     form_h2_word: "personalized learning",
     form_pitch: "Personalized AI tutoring meets every student where they are. Real teachers lead the day. Academics done in 2 hours, measured by MAP — 2.8× faster than the national average. See how it works.",
     form_quote_text: "I'm a real teacher at one of these so-called AI schools. We're not replacing teachers — I've never had more time to actually teach.",
@@ -80,7 +54,7 @@ const VARIANTS = {
     axis_spotlight_h2: "Every student. Every subject. Their exact level.",
     axis_spotlight_body: "Every Unbound student is <strong>assessed in each subject</strong> at the start of the year — and works at the <strong>appropriate grade level for that subject</strong>. A student can be <strong>ahead in math and behind in reading</strong>; the curriculum adapts in each. <strong>Students who are behind catch up.</strong> <strong>Students who are ahead keep progressing</strong> at their own faster pace, never held back. While AI handles practice and pacing, real teachers run live classes, 1:1 check-ins, and afternoon workshops. The result: <strong>mastery, not memorization</strong>. <strong>2.8× faster growth on MAP.</strong>",
     axis_spotlight_pull_quote: "AI handles the busy work. I get to work one-on-one with my students, lead live workshops, and help them build real projects they actually care about.",
-    axis_spotlight_pull_quote_by: "Zack, Unbound Academy teacher · Ad 19U",
+    axis_spotlight_pull_quote_by: "Zack, Unbound Academy teacher",
     final_cta_h2: "See How Personalized Learning Works.",
     final_cta_p: "Personalized academics in 2 hours, taught by real teachers. The most innovative tuition-free charter school in Arizona.",
     testy_order: ["lauren","rochelle","breanna"],
@@ -88,25 +62,24 @@ const VARIANTS = {
   "life-skills": {
     lp_variant: "life_skills",
     title: "Unbound Academy — 2 Hours of Academics. Afternoons for Life.",
-    meta_description: "Tuition-free virtual charter for grades 4–8. 2 hours of academics with personalized AI, then afternoons of life-skills workshops — entrepreneurship, financial literacy, public speaking, and more.",
+    meta_description: "Tuition-free virtual charter for grades 4–8. Core academics 8–11 AM, life-skills workshops 12–2 PM. Entrepreneurship, financial literacy, public speaking, and more.",
     hero_eyebrow: "Arizona · Grades 4–8 · Tuition-Free Charter School",
-    hero_h1_a: "2 hours of academics.",
-    hero_h1_b: "Afternoons for life.",
+    hero_h1_html: `<h1 class="disp d1">2 hours of academics.</h1>
+      <h1 class="disp d1" style="color:var(--green)">Afternoons for life.</h1>`,
     hero_sub: "At Unbound Academy, students <strong>master core academics in just 2 hours</strong> with AI-personalized learning — then spend their afternoons in live life-skills workshops. From entrepreneurship and financial literacy to public speaking and grit, students learn from real teachers and collaborate with real classmates every day.",
-    cta_hero: "See What Students Build",
-    cta_sticky: "Apply Today →",
+    cta_hero: "Enroll Now",
+    cta_sticky: "Enroll Now →",
     cta_final_label: "Get Started",
-    cta_final_btn: "Reserve Your Spot →",
-    include_trailer: false,
+    cta_final_btn: "Enroll Now →",
     form_h2_word: "real-world skills education",
-    form_pitch: "Academics done by 11 AM. Afternoons spent building businesses, learning to invest, mastering public speaking, writing books. The skills your child will actually use — that traditional school never teaches.",
-    form_quote_text: "My mom was like, 'Only two hours of school? That's not enough.' But I'm actually ahead in math and reading. I got 90th percentile on my last test.",
-    form_quote_by: "Unbound Academy student · Ad 8U",
-    axis_spotlight_eyebrow: "Why 2 Hours Is Enough",
+    form_pitch: "Focus on core academics in the morning and our afternoons are spent building businesses, learning to invest, mastering public speaking, writing books. The skills your child will actually use that traditional school never teaches.",
+    form_quote_text: "We did business builders where we started a business and tried to earn $50. I'm actually going to use this in the future. There's a lot more life skills we're going to use.",
+    form_quote_by: "Unbound Academy student",
+    axis_spotlight_eyebrow: "",
     axis_spotlight_h2: "School isn't just about grades.",
-    axis_spotlight_body: "Traditional school: 6–8 hours of academics, standard electives. Unbound: 2 hours of AI-personalized academics + live life-skills workshops every afternoon. From entrepreneurship and financial literacy to public speaking and grit, students learn skills they'll actually use — and they're ahead in math and reading.",
+    axis_spotlight_body: "8 AM to 11 AM: core academics. Math, reading, science, and writing, each at your child's actual grade level. 12 PM to 2 PM: live life-skills workshops. Entrepreneurship, financial literacy, public speaking, and grit, taught by real teachers and built around real outcomes. Traditional school spends 6 to 8 hours on academics alone. Unbound spends 2 hours mastering them, then 2 hours on the skills your child will actually use.",
     axis_spotlight_pull_quote: "With traditional schools, students are stuck learning academics for six-plus hours. Here we do two hours where their brains are working way more effectively. And they're getting to apply actual life skills — entrepreneurship, grit, financial literacy — things they'd never get in a regular middle school.",
-    axis_spotlight_pull_quote_by: "Unbound Academy teacher · Ad 23U",
+    axis_spotlight_pull_quote_by: "Unbound Academy teacher",
     final_cta_h2: "Apply Today. Build Something Real.",
     final_cta_p: "2 hours of academics. Afternoons for the skills your child will actually use. Tuition-free, Arizona-based, grades 4–8.",
     testy_order: ["breanna","rochelle","lauren"],
@@ -174,16 +147,16 @@ function buildVariant(slug, v) {
   html = html.replace(/src="images\//g, 'src="../images/');
   html = html.replace(/src="photos\//g, 'src="../photos/');
 
-  // 5. Hero eyebrow (now generic — no axis label)
+  // 5. Hero eyebrow
   html = html.replace(
     /<div class="hero-eyebrow">[^<]*<\/div>/,
     `<div class="hero-eyebrow">${v.hero_eyebrow}</div>`
   );
 
-  // 6. Hero H1 (both lines)
+  // 6. Hero H1 — replace baseline 2-line block with variant-supplied HTML (1 or 2 lines)
   html = html.replace(
     /<h1 class="disp d1">Academics in 2 Hours\.<\/h1>\s*<h1 class="disp d1" style="color:var\(--green\)">Afternoons for the<br>skills that shape them\.<\/h1>/,
-    `<h1 class="disp d1">${v.hero_h1_a}</h1>\n      <h1 class="disp d1" style="color:var(--green)">${v.hero_h1_b}</h1>`
+    v.hero_h1_html
   );
 
   // 7. Hero sub
@@ -197,14 +170,6 @@ function buildVariant(slug, v) {
     /<button class="btn-primary" onclick="document\.getElementById\('apply'\)\.scrollIntoView\(\{behavior:'smooth'\}\)">\s*Enroll Now\s*<svg/,
     `<button class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">\n        ${v.cta_hero}\n        <svg`
   );
-
-  // 8b. Trailer section (HC + LS only) — inject right after hero closing </section>
-  if (v.include_trailer) {
-    html = html.replace(
-      /(<\/section>\s*\n\s*<!-- ════════════════════════════════\s*\n\s*PRESS STRIP — dark)/,
-      `</section>\n${TRAILER_SECTION}\n<!-- ════════════════════════════════\n     PRESS STRIP — dark`
-    );
-  }
 
   // 9. Form section h2 word swap + pitch
   html = html.replace(
@@ -228,7 +193,10 @@ function buildVariant(slug, v) {
     `<input type="hidden" name="lp_variant" id="f_lp_variant" value="${v.lp_variant}" />\n            $1`
   );
 
-  // 12. Insert axis-spotlight section BEFORE benefits section
+  // 12. Insert axis-spotlight section BEFORE benefits section. Eyebrow rendered only if non-empty.
+  const eyebrowHtml = v.axis_spotlight_eyebrow
+    ? `<div class="lbl-light" style="justify-content:center">${v.axis_spotlight_eyebrow}</div>\n      `
+    : "";
   const axisSpotlightHtml = `
 <!-- ════════════════════════════════
      AXIS SPOTLIGHT — ${slug} (variant-specific)
@@ -236,8 +204,7 @@ function buildVariant(slug, v) {
 <section style="background:var(--off2);padding:80px 0;border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)">
   <div class="c">
     <div style="max-width:760px;margin:0 auto;text-align:center">
-      <div class="lbl-light" style="justify-content:center">${v.axis_spotlight_eyebrow}</div>
-      <h2 class="disp d2" style="color:var(--ink);margin-bottom:18px">${v.axis_spotlight_h2}</h2>
+      ${eyebrowHtml}<h2 class="disp d2" style="color:var(--ink);margin-bottom:18px">${v.axis_spotlight_h2}</h2>
       <p class="axis-body" style="font-size:17px;color:var(--ink2);line-height:1.75;margin-bottom:32px">${v.axis_spotlight_body}</p>
       <style>.axis-body strong{color:var(--ink);font-weight:700}</style>
       <div style="background:#fff;border-left:3px solid var(--green);padding:24px 28px;text-align:left;border-radius:0 8px 8px 0;box-shadow:0 1px 4px rgba(0,0,0,.04);max-width:640px;margin:0 auto">
@@ -267,7 +234,7 @@ function buildVariant(slug, v) {
     }
   );
 
-  // 14. Final CTA section (varied per axis to avoid CTA repetition)
+  // 14. Final CTA section
   html = html.replace(
     /<section class="cta-sec">\s*<div class="c">\s*<div class="lbl-cta">Apply Today<\/div>\s*<h2 class="disp d2">It's Time to Find Out\.<\/h2>\s*<p>Spots are limited each term\. Takes less than 2 minutes to get started\.<\/p>\s*<button class="btn-dark" onclick="document\.getElementById\('apply'\)\.scrollIntoView\(\{behavior:'smooth'\}\)">Enroll Now →<\/button>\s*<p class="cta-note">Arizona · Grades 4–8 · Fully Funded<\/p>\s*<\/div>\s*<\/section>/,
     `<section class="cta-sec">
@@ -310,4 +277,4 @@ for (const [slug, v] of Object.entries(VARIANTS)) {
   const size = fs.statSync(out).size;
   console.log(`✓ ${slug}/index.html  (${size} bytes)`);
 }
-console.log("\nDone. Refresh browser to see updates.");
+console.log("\nDone.");
