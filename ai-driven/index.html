@@ -84,6 +84,11 @@
     .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
     .hpill{font-size:12px;font-weight:600;padding:6px 13px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#aaa}
     .hpill span{color:var(--green);margin-right:4px}
+    .hero-stat{display:inline-flex;align-items:center;gap:16px;margin-top:24px;padding:14px 20px;background:rgba(206,255,101,.08);border:1px solid rgba(206,255,101,.22);border-radius:8px;max-width:520px}
+    .hero-stat-big{font-family:'Coolvetica Condensed',sans-serif;font-size:46px;color:var(--green);line-height:1;flex-shrink:0}
+    .hero-stat-text{font-size:13px;color:#ddd;line-height:1.45}
+    .hero-stat-text strong{color:#fff;font-weight:700}
+    @media (max-width:560px){.hero-stat{gap:12px;padding:12px 14px}.hero-stat-big{font-size:38px}.hero-stat-text{font-size:12px}}
 
     /* ── PRESS STRIP (dark, marquee) ────────────────────── */
     .press-strip{background:var(--b2);border-bottom:1px solid var(--border-d);padding:0;overflow:hidden}
@@ -390,6 +395,11 @@
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </button>
 
+      <div class="hero-stat">
+        <div class="hero-stat-big">2.8×</div>
+        <div class="hero-stat-text"><strong>Faster learning growth</strong><br>vs. national average, measured by NWEA MAP</div>
+      </div>
+
       <div class="hero-pills">
         <div class="hpill"><span>✓</span>Tuition Free</div>
         <div class="hpill"><span>✓</span>Public Charter School</div>
@@ -536,6 +546,55 @@
   </div>
 </section>
 
+<!-- ════════════════════════════════
+     SCHEDULE — dark
+════════════════════════════════ -->
+<section class="schedule-sec" id="schedule">
+  <div class="c">
+    <div class="schedule-grid">
+      <div class="sch-left">
+        <div class="lbl-dark">Daily Schedule</div>
+        <h2 class="disp d3">A Day at Unbound.</h2>
+        <p>School done by 2 PM. Students own the rest of their day.</p>
+        <div class="stat-callout">
+          <div class="stat-big">2.8×</div>
+          <div class="stat-note">faster learning than the national average,<br>measured by NWEA MAP Growth assessments</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">8:00 – 8:30</div>
+          <div class="tl-body">
+            <h4>Morning Launch + Brain Warm-Up</h4>
+            <p>Strategy games, mindset challenges, and creative warm-ups get students ready to focus.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">8:30 – 11:00</div>
+          <div class="tl-body">
+            <h4>Core Academics: AI-Powered &amp; Self-Paced</h4>
+            <p>2 focused hours of Math, ELA, Science, and Social Studies, personalized to each student's level in real time.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">11:00 – 12:00</div>
+          <div class="tl-body">
+            <h4>Lunch + Social Break</h4>
+            <p>Students eat together on video, decompress, and connect with classmates.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:00 – 2:00</div>
+          <div class="tl-body">
+            <h4>Afternoon: Real-World Skills</h4>
+            <p>2 project-based workshops per session, chosen by student demand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ════════════════════════════════
      AXIS SPOTLIGHT — ai-driven (variant-specific)
@@ -624,17 +683,17 @@
     </div>
     <div class="students-grid" id="studentsGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
       <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4">
-        <img src="https://cdn.prod.website-files.com/67f3ddeb99a658ee1f0fdecd/67f43d2e5b1997ff583e63d8_67bca0355a4cbf6931dab8d3_spyglass.october..65.2024.png" alt="Unbound student" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <img src="../photos/unstoppable/unstoppable-1-self-driven.jpg" alt="Unbound student" style="width:100%;height:100%;object-fit:cover;display:block" />
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%)"></div>
         <p style="position:absolute;bottom:20px;left:20px;right:20px;color:#fff;font-size:14px;font-weight:600;line-height:1.5;margin:0">Unbound students are self-driven and confident because they set and achieve their own goals.</p>
       </div>
       <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4">
-        <img src="https://cdn.prod.website-files.com/67f3ddeb99a658ee1f0fdecd/67f43d2e2554fa5bd4e98b1d_67bca0353297c0c9d5cc6b9c_spyglass.october..52.2024.png" alt="Unbound students collaborating" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <img src="../photos/unstoppable/unstoppable-2-collaborate.jpg" alt="Unbound students collaborating" style="width:100%;height:100%;object-fit:cover;display:block" />
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%)"></div>
         <p style="position:absolute;bottom:20px;left:20px;right:20px;color:#fff;font-size:14px;font-weight:600;line-height:1.5;margin:0">Unbound students collaborate and build community as they work together on projects.</p>
       </div>
       <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4">
-        <img src="https://cdn.prod.website-files.com/67f3ddeb99a658ee1f0fdecd/67f43d2cd4d433dc93e157a0_67e1070a99cbbd960edc9793_spyglass.october..55.2024.webp" alt="Unbound student working" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <img src="../photos/unstoppable/unstoppable-3-limitless.jpg" alt="Unbound student working" style="width:100%;height:100%;object-fit:cover;display:block" />
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%)"></div>
         <p style="position:absolute;bottom:20px;left:20px;right:20px;color:#fff;font-size:14px;font-weight:600;line-height:1.5;margin:0">Unbound students carry a limitless mindset into adulthood by tackling real-world challenges early.</p>
       </div>
@@ -646,55 +705,6 @@
       <button class="mob-arrow" id="studentsNext" aria-label="Next">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4"/></svg>
       </button>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SCHEDULE — dark
-════════════════════════════════ -->
-<section class="schedule-sec" id="schedule">
-  <div class="c">
-    <div class="schedule-grid">
-      <div class="sch-left">
-        <div class="lbl-dark">Daily Schedule</div>
-        <h2 class="disp d3">A Day at Unbound.</h2>
-        <p>School done by 2 PM. Students own the rest of their day.</p>
-        <div class="stat-callout">
-          <div class="stat-big">2.8×</div>
-          <div class="stat-note">faster learning than the national average,<br>measured by NWEA MAP Growth assessments</div>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-time">8:00 – 8:30</div>
-          <div class="tl-body">
-            <h4>Morning Launch + Brain Warm-Up</h4>
-            <p>Strategy games, mindset challenges, and creative warm-ups get students ready to focus.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">8:30 – 11:00</div>
-          <div class="tl-body">
-            <h4>Core Academics: AI-Powered &amp; Self-Paced</h4>
-            <p>2 focused hours of Math, ELA, Science, and Social Studies, personalized to each student's level in real time.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">11:00 – 12:00</div>
-          <div class="tl-body">
-            <h4>Lunch + Social Break</h4>
-            <p>Students eat together on video, decompress, and connect with classmates.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">12:00 – 2:00</div>
-          <div class="tl-body">
-            <h4>Afternoon: Real-World Skills</h4>
-            <p>2 project-based workshops per session, chosen by student demand.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

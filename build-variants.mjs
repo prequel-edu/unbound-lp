@@ -42,6 +42,10 @@ const VARIANTS = {
     hero_h1_html: `<h1 class="disp d1">AI-powered learning.</h1>
       <h1 class="disp d1" style="color:var(--green)">Real teachers at the center.</h1>`,
     hero_sub: "Unbound Academy uses <strong>advanced AI to tailor every lesson</strong> while teachers lead, guide, and mentor daily. Students finish academics in 2 hours, then join live workshops with peers to build skills for the real world.",
+    hero_stat_html: `<div class="hero-stat">
+        <div class="hero-stat-big">2.8×</div>
+        <div class="hero-stat-text"><strong>Faster learning growth</strong><br>vs. national average, measured by NWEA MAP</div>
+      </div>`,
     cta_hero: "Enroll Now",
     cta_sticky: "Enroll Now →",
     cta_final_label: "Get Started",
@@ -78,7 +82,7 @@ const VARIANTS = {
     axis_spotlight_eyebrow: "",
     axis_spotlight_h2: "School isn't just about grades.",
     axis_spotlight_body: "8 AM to 11 AM: core academics. Math, reading, science, and writing, each at your child's actual grade level. 12 PM to 2 PM: live life-skills workshops. Entrepreneurship, financial literacy, public speaking, and grit, taught by real teachers and built around real outcomes. Traditional school spends 6 to 8 hours on academics alone. Unbound spends 2 hours mastering them, then 2 hours on the skills your child will actually use.",
-    axis_spotlight_pull_quote: "With traditional schools, students are stuck learning academics for six-plus hours. Here we do two hours where their brains are working way more effectively. And they're getting to apply actual life skills — entrepreneurship, grit, financial literacy — things they'd never get in a regular middle school.",
+    axis_spotlight_pull_quote: "They're getting to apply actual life skills — entrepreneurship, grit, financial literacy — things they'd never get in a regular middle school.",
     axis_spotlight_pull_quote_by: "Unbound Academy teacher",
     final_cta_h2: "Apply Today. Build Something Real.",
     final_cta_p: "2 hours of academics. Afternoons for the skills your child will actually use. Tuition-free, Arizona-based, grades 4–8.",
@@ -170,6 +174,14 @@ function buildVariant(slug, v) {
     /<button class="btn-primary" onclick="document\.getElementById\('apply'\)\.scrollIntoView\(\{behavior:'smooth'\}\)">\s*Enroll Now\s*<svg/,
     `<button class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">\n        ${v.cta_hero}\n        <svg`
   );
+
+  // 8b. Optional hero stat badge (variant-specific) — inserted between CTA and hero-pills
+  if (v.hero_stat_html) {
+    html = html.replace(
+      /(<\/svg>\s*<\/button>)\s*(<div class="hero-pills">)/,
+      `$1\n\n      ${v.hero_stat_html}\n\n      $2`
+    );
+  }
 
   // 9. Form section h2 word swap + pitch
   html = html.replace(
