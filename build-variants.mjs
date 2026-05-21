@@ -22,15 +22,15 @@ const VARIANTS = {
     cta_final_label: "Apply Today",
     cta_final_btn: "Enroll Now →",
     form_h2_word: "live-teacher learning",
-    form_pitch: "Real Arizona-certified teachers, on screen with your child every day. Live class time, daily 1:1 check-ins, and real academic help when they get stuck. See if Unbound is the right fit for your family.",
+    form_pitch: "Real Arizona-certified teachers, on screen with your child every day. Live class time, daily 1:1 check-ins, and real academic help when they get stuck. See if Unbound Academy is the right fit for your family.",
     form_quote_text: "When my mom brought it up to me first, I was hesitant because I didn't want to start over. But once I started, I realized this is a school for me.",
-    form_quote_by: "Elijah, Unbound student",
-    axis_spotlight_eyebrow: "Inside a Day at Unbound",
+    form_quote_by: "Elijah, Unbound Academy student",
+    axis_spotlight_eyebrow: "Inside a Day at Unbound Academy",
     axis_spotlight_h2: "Your child is never alone.",
-    axis_spotlight_body: "Unbound is the most interactive virtual school with high levels of teacher-student engagement. Live class sessions, daily 1:1 teacher check-ins, real academic help when students get stuck, and every teacher is Arizona-certified.",
+    axis_spotlight_body: "Unbound Academy is the most interactive virtual school with high levels of teacher-student engagement. Live class sessions, daily 1:1 teacher check-ins, real academic help when students get stuck, and every teacher is Arizona-certified.",
     axis_spotlight_pull_quote: "My child went from struggling to thriving in just a few months.",
     axis_spotlight_pull_quote_by: "Unbound Academy parent",
-    final_cta_h2: "Let's See If Unbound's the Right Fit.",
+    final_cta_h2: "Let's See If Unbound Academy's the Right Fit.",
     final_cta_p: "Real teachers. Real time. A school that treats your child like a person, not a number.",
     testy_order: ["rochelle","breanna","lauren"],
   },
@@ -54,9 +54,9 @@ const VARIANTS = {
     form_pitch: "Personalized AI tutoring meets every student where they are. Real teachers lead the day. Academics done in 2 hours, measured by MAP — 2.8× faster than the national average. See how it works.",
     form_quote_text: "I'm a real teacher at one of these so-called AI schools. We're not replacing teachers — I've never had more time to actually teach.",
     form_quote_by: "Zack, Unbound Academy teacher",
-    axis_spotlight_eyebrow: "How Learning Works at Unbound",
+    axis_spotlight_eyebrow: "How Learning Works at Unbound Academy",
     axis_spotlight_h2: "Every student. Every subject. Their exact level.",
-    axis_spotlight_body: "Every Unbound student is <strong>assessed in each subject</strong> at the start of the year — and works at the <strong>appropriate grade level for that subject</strong>. A student can be <strong>ahead in math and behind in reading</strong>; the curriculum adapts in each. <strong>Students who are behind catch up.</strong> <strong>Students who are ahead keep progressing</strong> at their own faster pace, never held back. While AI handles practice and pacing, real teachers run live classes, 1:1 check-ins, and afternoon workshops. The result: <strong>mastery, not memorization</strong>. <strong>2.8× faster growth on MAP.</strong>",
+    axis_spotlight_body: "Every Unbound Academy student is <strong>assessed in each subject</strong> at the start of the year — and works at the <strong>appropriate grade level for that subject</strong>. A student can be <strong>ahead in math and behind in reading</strong>; the curriculum adapts in each. <strong>Students who are behind catch up.</strong> <strong>Students who are ahead keep progressing</strong> at their own faster pace, never held back. While AI handles practice and pacing, real teachers run live classes, 1:1 check-ins, and afternoon workshops. The result: <strong>mastery, not memorization</strong>. <strong>2.8× faster growth on MAP.</strong>",
     axis_spotlight_pull_quote: "AI handles the busy work. I get to work one-on-one with my students, lead live workshops, and help them build real projects they actually care about.",
     axis_spotlight_pull_quote_by: "Zack, Unbound Academy teacher",
     final_cta_h2: "See How Personalized Learning Works.",
@@ -81,7 +81,7 @@ const VARIANTS = {
     form_quote_by: "Unbound Academy student",
     axis_spotlight_eyebrow: "",
     axis_spotlight_h2: "School isn't just about grades.",
-    axis_spotlight_body: "8 AM to 11 AM: core academics. Math, reading, science, and writing, each at your child's actual grade level. 12 PM to 2 PM: live life-skills workshops. Entrepreneurship, financial literacy, public speaking, and grit, taught by real teachers and built around real outcomes. Traditional school spends 6 to 8 hours on academics alone. Unbound spends 2 hours mastering them, then 2 hours on the skills your child will actually use.",
+    axis_spotlight_body: "8 AM to 11 AM: core academics. Math, reading, science, and writing, each at your child's actual grade level. 12 PM to 2 PM: live life-skills workshops. Entrepreneurship, financial literacy, public speaking, and grit, taught by real teachers and built around real outcomes. Traditional school spends 6 to 8 hours on academics alone. Unbound Academy spends 2 hours mastering them, then 2 hours on the skills your child will actually use.",
     axis_spotlight_pull_quote: "They're getting to apply actual life skills — entrepreneurship, grit, financial literacy — things they'd never get in a regular middle school.",
     axis_spotlight_pull_quote_by: "Unbound Academy teacher",
     final_cta_h2: "Apply Today. Build Something Real.",
@@ -93,17 +93,17 @@ const VARIANTS = {
 const TESTIMONIALS = {
   rochelle: `      <div class="testy-card">
         <div class="testy-photo">
-          <img src="../images/Screenshot-2025-07-11-at-2.19.17-PM.png" alt="Rochelle, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
+          <img src="../images/Screenshot-2025-07-11-at-2.19.17-PM.png" alt="Rochelle, Unbound Academy Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
         </div>
         <div class="testy-body">
           <div class="testy-ql">"Our son trains five days a week and still thrives academically."</div>
-          <div class="testy-p">We're a sports family. At every other school, our son was constantly choosing between learning and doing what he loves. Unbound eliminated that choice entirely. He thrives academically AND athletically now.</div>
+          <div class="testy-p">We're a sports family. At every other school, our son was constantly choosing between learning and doing what he loves. Unbound Academy eliminated that choice entirely. He thrives academically AND athletically now.</div>
           <div class="testy-by">Rochelle R. · Chandler, AZ</div>
         </div>
       </div>`,
   breanna: `      <div class="testy-card">
         <div class="testy-photo">
-          <img src="../images/Screenshot-2025-07-11-at-2.19.42-PM.png" alt="Breanna, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
+          <img src="../images/Screenshot-2025-07-11-at-2.19.42-PM.png" alt="Breanna, Unbound Academy Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
         </div>
         <div class="testy-body">
           <div class="testy-ql">"Two hours of focused learning. The rest? Real life."</div>
@@ -113,11 +113,11 @@ const TESTIMONIALS = {
       </div>`,
   lauren: `      <div class="testy-card">
         <div class="testy-photo">
-          <img src="../images/Screenshot-2025-07-11-at-2.30.27-PM.png" alt="Lauren, Unbound Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
+          <img src="../images/Screenshot-2025-07-11-at-2.30.27-PM.png" alt="Lauren, Unbound Academy Mom" onerror="this.parentElement.style.background='#1a1a1a'" />
         </div>
         <div class="testy-body">
           <div class="testy-ql">"The traditional education system is long overdue for a change."</div>
-          <div class="testy-p">As a parent who believes in AI and modern education, Unbound was an easy decision. We travel frequently, so the flexible approach is a perfect fit. The business and tech courses are crucial for my child's future.</div>
+          <div class="testy-p">As a parent who believes in AI and modern education, Unbound Academy was an easy decision. We travel frequently, so the flexible approach is a perfect fit. The business and tech courses are crucial for my child's future.</div>
           <div class="testy-by">Lauren S. · Mesa, AZ</div>
         </div>
       </div>`,
@@ -189,13 +189,13 @@ function buildVariant(slug, v) {
     `Tuition-free virtual ${v.form_h2_word} for <span style="background:var(--black);color:var(--green);padding:0 6px;display:inline">grades 4–8</span>`
   );
   html = html.replace(
-    /<p>Guided by real teachers and AI, Unbound students master academics in 2 focused hours, then spend afternoons building real-world skills\. See if Unbound is the right fit for your family\.<\/p>/,
+    /<p>Guided by real teachers and AI, Unbound Academy students master academics in 2 focused hours, then spend afternoons building real-world skills\. See if Unbound is the right fit for your family\.<\/p>/,
     `<p>${v.form_pitch}</p>`
   );
 
   // 10. Form side-quote
   html = html.replace(
-    /<div class="side-quote">\s*<div class="qt">"Two hours of focused learning\. The rest\? Real life\. Our boys finish core academics in just two hours a day\."<\/div>\s*<div class="qb">Breanna L\., Unbound Mom · Tucson, AZ<\/div>\s*<\/div>/,
+    /<div class="side-quote">\s*<div class="qt">"Two hours of focused learning\. The rest\? Real life\. Our boys finish core academics in just two hours a day\."<\/div>\s*<div class="qb">Breanna L\., Unbound Academy Mom · Tucson, AZ<\/div>\s*<\/div>/,
     `<div class="side-quote">\n          <div class="qt">"${v.form_quote_text}"</div>\n          <div class="qb">${v.form_quote_by}</div>\n        </div>`
   );
 
