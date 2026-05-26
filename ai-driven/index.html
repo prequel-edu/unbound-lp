@@ -496,7 +496,7 @@
               <div class="fg"><label>First Name *</label><input type="text" name="first_name" placeholder="First name" required /></div>
               <div class="fg"><label>Last Name *</label><input type="text" name="last_name" placeholder="Last name" required /></div>
             </div>
-            <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="parent@example.com" required /></div>
+            <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="parent@example.com" required /><span class="fg-error" data-for="email" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
             <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 000-0000" inputmode="tel" required /><span class="fg-error" data-for="phone" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
             <div class="frow">
               <div class="fg">
@@ -1110,6 +1110,18 @@ const RC_SITE_KEY  = '6Le4-posAAAAAPNdbAh5ARrYsaN9WvfsmDXb3Wq1';
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
+
+  // Email validation — strict format + common-typo correction (.con, gmai.com, etc.)
+  const emailEl = form.querySelector('input[name="email"]');
+  const emailErrEl = form.querySelector('.fg-error[data-for="email"]');
+  const showEmailErr = (msg) => { if (emailErrEl) { emailErrEl.textContent = msg; emailErrEl.style.display = 'block'; } emailEl?.focus(); };
+  const emailVal = (emailEl?.value || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(emailVal)) { showEmailErr('Please enter a valid email address.'); return; }
+  if (/\.con$/i.test(emailVal)) { const fixed = emailVal.replace(/\.con$/i, '.com'); if (emailEl) emailEl.value = fixed; showEmailErr('We corrected ".con" to ".com" — please confirm your email and submit again.'); return; }
+  const EMAIL_TYPOS = {'gmai.com':'gmail.com','gmial.com':'gmail.com','gmal.com':'gmail.com','gnail.com':'gmail.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','hotmial.com':'hotmail.com','hotmai.com':'hotmail.com','iclou.com':'icloud.com','icould.com':'icloud.com','outloo.com':'outlook.com'};
+  const emailDomain = emailVal.split('@')[1];
+  if (EMAIL_TYPOS[emailDomain]) { const fixed = emailVal.replace('@' + emailDomain, '@' + EMAIL_TYPOS[emailDomain]); if (emailEl) emailEl.value = fixed; showEmailErr('Did you mean ' + fixed + '? Please confirm and submit again.'); return; }
+  if (emailErrEl) emailErrEl.style.display = 'none';
 
   // Phone validation — require ≥10 digits to prevent SalesMsg silent failures
   const phoneEl = form.querySelector('input[name="phone"]');
