@@ -137,6 +137,9 @@
     .fg select{cursor:pointer}
     .fg select option{background:#fff;color:var(--ink)}
     .fg input:focus,.fg select:focus{border-color:var(--ink);box-shadow:0 0 0 2px rgba(8,8,8,.06)}
+    .fg label .req{color:#e5484d;font-weight:700}
+    .fg input.invalid,.fg select.invalid{border-color:#e5484d;box-shadow:0 0 0 2px rgba(229,72,77,.14)}
+    .fg-error{color:#e5484d;font-size:13px;margin-top:6px}
     .consent{font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 14px}
     .consent a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
     .btn-submit{width:100%;padding:15px;font-family:'Coolvetica Condensed',sans-serif;font-size:17px;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--green);border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
@@ -478,7 +481,7 @@
           <h3>Start Your Enrollment</h3>
           <p class="fsub">Open to all eligible Arizona students in grades 4–8.</p>
 
-          <form onsubmit="handleSubmit(event)">
+          <form onsubmit="handleSubmit(event)" novalidate>
             <input type="hidden" name="lp_variant" id="f_lp_variant" value="human_centric" />
             <input type="hidden" name="utm_source"   id="f_utm_source" />
             <input type="hidden" name="utm_medium"   id="f_utm_medium" />
@@ -487,14 +490,14 @@
             <input type="hidden" name="utm_content"  id="f_utm_content" />
 
             <div class="frow">
-              <div class="fg"><label>First Name *</label><input type="text" name="first_name" placeholder="First name" required /></div>
-              <div class="fg"><label>Last Name *</label><input type="text" name="last_name" placeholder="Last name" required /></div>
+              <div class="fg"><label>First Name <span class="req">*</span></label><input type="text" name="first_name" placeholder="First name" required /></div>
+              <div class="fg"><label>Last Name <span class="req">*</span></label><input type="text" name="last_name" placeholder="Last name" required /></div>
             </div>
-            <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="parent@example.com" required /><span class="fg-error" data-for="email" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
-            <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 000-0000" inputmode="tel" required /><span class="fg-error" data-for="phone" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
+            <div class="fg"><label>Email Address <span class="req">*</span></label><input type="email" name="email" placeholder="parent@example.com" required /><span class="fg-error" data-for="email" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
+            <div class="fg"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="(555) 000-0000" inputmode="tel" required /><span class="fg-error" data-for="phone" style="display:none;color:#c00;font-size:13px;margin-top:6px"></span></div>
             <div class="frow">
               <div class="fg">
-                <label>State *</label>
+                <label>State <span class="req">*</span></label>
                 <select name="state_code" required>
                   <option value="">Select state</option>
                   <option value="Arizona">Arizona</option>
@@ -517,10 +520,10 @@
                   <option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option>
                 </select>
               </div>
-              <div class="fg"><label>Zip Code *</label><input type="text" name="zip_code" placeholder="85001" maxlength="5" required /></div>
+              <div class="fg"><label>Zip Code <span class="req">*</span></label><input type="text" name="zip_code" placeholder="85001" maxlength="5" required /></div>
             </div>
             <div class="fg">
-              <label>Grade Eligibility *</label>
+              <label>Grade Eligibility <span class="req">*</span></label>
               <select name="grade_eligibility" required>
                 <option value="">Which best describes your child(ren)?</option>
                 <option value="eligible">At least one of my children is currently in Grade 4 to Grade 8</option>
@@ -1105,6 +1108,38 @@ async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
 
+  // ── Required-field validation (branded; replaces the native browser tooltip) ──
+  const REQUIRED = [
+    ['first_name','First name'], ['last_name','Last name'], ['email','Email address'],
+    ['phone','Phone number'], ['state_code','State'], ['zip_code','Zip code'],
+    ['grade_eligibility','Grade eligibility']
+  ];
+  const fieldErr = (el, msg) => {
+    const fg = el.closest('.fg'); if (!fg) return;
+    el.classList.add('invalid');
+    let s = fg.querySelector('.fg-error');
+    if (!s) { s = document.createElement('span'); s.className = 'fg-error'; fg.appendChild(s); }
+    if (s.getAttribute('data-for') !== 'form') { s.textContent = msg; s.style.display = 'block'; }
+  };
+  const clearErr = (el) => {
+    el.classList.remove('invalid');
+    const fg = el.closest('.fg'); const s = fg && fg.querySelector('.fg-error');
+    if (s && s.getAttribute('data-for') !== 'form') s.style.display = 'none';
+  };
+  if (!form.__clearBound) {
+    form.__clearBound = true;
+    const clr = (ev) => { if (ev.target && ev.target.name) clearErr(ev.target); };
+    form.addEventListener('input', clr, true);
+    form.addEventListener('change', clr, true);
+  }
+  let firstMissing = null;
+  for (const [nm, label] of REQUIRED) {
+    const el = form.querySelector('[name="' + nm + '"]'); if (!el) continue;
+    if (!(el.value || '').trim()) { fieldErr(el, label + ' is required'); if (!firstMissing) firstMissing = el; }
+    else { clearErr(el); }
+  }
+  if (firstMissing) { firstMissing.focus(); firstMissing.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
+
   // Email validation — strict format + common-typo correction (.con, gmai.com, etc.)
   const emailEl = form.querySelector('input[name="email"]');
   const emailErrEl = form.querySelector('.fg-error[data-for="email"]');
@@ -1132,6 +1167,7 @@ async function handleSubmit(e) {
   if (phoneErrEl) phoneErrEl.style.display = 'none';
 
   const btn  = form.querySelector('.btn-submit');
+  const btnLabel = btn.textContent;
   btn.textContent = 'Sending…'; btn.disabled = true;
 
   // reCAPTCHA v3 — get token before submitting
@@ -1165,17 +1201,53 @@ async function handleSubmit(e) {
   });
   if (rcToken) fields.push({ name:'recaptcha_token', value:rcToken });
 
+  const showFormError = () => {
+    btn.textContent = btnLabel; btn.disabled = false;
+    let el = form.querySelector('.fg-error[data-for="form"]');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'fg-error'; el.setAttribute('data-for', 'form');
+      el.style.cssText = 'color:#c0392b;font-size:14px;line-height:1.5;margin-top:12px';
+      btn.insertAdjacentElement('afterend', el);
+    }
+    el.innerHTML = "Something went wrong sending your info. Please try again. Still stuck? Call or text <a href=\"tel:+16029628979\" style=\"color:inherit;font-weight:700;text-decoration:underline\">(602) 962-8979</a> or email <a href=\"mailto:admissions@unbound.school\" style=\"color:inherit;font-weight:700;text-decoration:underline\">admissions@unbound.school</a> and we'll get you set up.";
+    el.style.display = 'block';
+  };
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+  // Submit to HubSpot. Retry once on a transient failure (rate-limit / 5xx / network);
+  // only proceed to success on a real 2xx. No false success, no silent lead loss.
+  let submitOK = false, failReason = '';
   if (HS_FORM !== 'YOUR_FORM_GUID_HERE') {
-    try {
-      await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM}`,
-        { method:'POST', headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({ fields, context:{ pageUri:location.href, pageName:document.title } }) }
-      );
-    } catch(err) { console.error('HubSpot:', err); }
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        const res = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM}`,
+          { method:'POST', headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ fields, context:{ pageUri:location.href, pageName:document.title } }) }
+        );
+        if (res.ok) { submitOK = true; break; }
+        failReason = 'http_' + res.status;
+        if ((res.status === 429 || res.status >= 500) && attempt < 2) { await sleep(800); continue; }
+        const t = await res.text().catch(() => ''); console.error('HubSpot submit failed', res.status, t);
+        break; // permanent (e.g. 400) — retry won't help
+      } catch (err) {
+        failReason = 'network_error'; console.error('HubSpot:', err);
+        if (attempt < 2) { await sleep(800); continue; }
+      }
+    }
+  } else {
+    submitOK = true; // form GUID not set = local preview, don't block
   }
 
-  if (typeof fbq !== 'undefined') fbq('track','Lead');
+  if (!submitOK) {
+    // Surface the failure rate in Meta (pixel already loaded) — no PII, no external hook.
+    if (typeof fbq !== 'undefined') fbq('trackCustom', 'LeadSubmitFailed', { reason: failReason, lp_variant: (fields.find(f => f.name === 'lp_variant') || {}).value || '' });
+    showFormError();
+    return; // no false success, no redirect — the parent sees an error and can retry
+  }
+
+  if (typeof fbq !== 'undefined') fbq('track','Lead');  // only count a lead that actually saved
 
   form.innerHTML = `
     <div style="text-align:center;padding:32px 0">
