@@ -72,7 +72,10 @@
     .hero-vid{position:absolute;inset:0;z-index:0}
     .hero-vid video{width:100%;height:100%;object-fit:cover;opacity:.16}
     .hero-vid::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,8,8,.1) 0%,rgba(8,8,8,.65) 55%,rgba(8,8,8,1) 100%)}
-    .hero-body{position:relative;z-index:2;width:100%;padding:80px 0 64px}
+    /* Hero 2-column: copy left, enrollment form right (above the fold) */
+    .hero-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;padding:72px 0 56px}
+    .hero-form{position:relative;z-index:2;width:100%;max-width:460px;justify-self:end}
+    .hero-body{position:relative;z-index:2;width:100%;padding:0}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:20px}
     .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--green)}
     .hero h1{margin-bottom:4px;color:#fff}
@@ -89,6 +92,19 @@
     .hero-stat-text{font-size:13px;color:#ddd;line-height:1.45}
     .hero-stat-text strong{color:#fff;font-weight:700}
     @media (max-width:560px){.hero-stat{gap:12px;padding:12px 14px}.hero-stat-big{font-size:38px}.hero-stat-text{font-size:12px}}
+    /* Hero form responsive: form sits right under the headline; supporting copy drops below it */
+    @media(max-width:960px){
+      .hero{min-height:auto}
+      .hero-grid{display:flex;flex-direction:column;gap:0;padding:24px 0 36px}
+      .hero-body{display:contents}
+      .hero-eyebrow{order:1}
+      .hero h1{order:2}
+      .hero-form{order:3;max-width:520px;width:100%;margin:18px auto 0;justify-self:auto}
+      .hero-sub{order:4;margin:24px 0 0;max-width:none}
+      .btn-primary{order:5;margin-top:20px}
+      .hero-stat{order:5;margin-top:20px}
+      .hero-pills{order:6;margin-top:18px}
+    }
 
     /* ── PRESS STRIP (dark, marquee) ────────────────────── */
     .press-strip{background:var(--b2);border-bottom:1px solid var(--border-d);padding:0;overflow:hidden}
@@ -103,6 +119,7 @@
 
     /* ── FORM SECTION (light) ────────────────────────────── */
     .form-sec{background:var(--off);padding:80px 0;border-bottom:1px solid var(--border-l)}
+    .form-grid--solo{grid-template-columns:1fr;max-width:760px;margin:0 auto}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-start}
     .form-left .avail-row{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#080808;margin-bottom:16px}
     .avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
@@ -385,6 +402,7 @@
     </video>
   </div>
   <div class="c">
+    <div class="hero-grid">
     <div class="hero-body">
       <div class="hero-eyebrow">Arizona · Grades 4–8 · Tuition-Free Charter School</div>
 
@@ -404,79 +422,9 @@
         <div class="hpill"><span>✓</span>All Eligible Applicants</div>
         <div class="hpill"><span>✓</span>Laptop Provided</div>
       </div>
-    </div>
-  </div>
-</section>
+    </div><!-- /hero-body -->
 
-<!-- ════════════════════════════════
-     PRESS STRIP — dark
-════════════════════════════════ -->
-<div class="press-strip">
-  <div class="press-inner">
-    <div class="press-label">As Seen In</div>
-    <div class="press-marquee">
-      <!-- Track is duplicated for seamless loop -->
-      <div class="press-track">
-        <div class="press-logo">Washington Times</div>
-        <div class="press-logo">AZ Family</div>
-        <div class="press-logo">AZ Big Media</div>
-        <div class="press-logo">AZ Business Magazine</div>
-        <div class="press-logo">The AZ Insider</div>
-        <div class="press-logo">WNG.org</div>
-        <div class="press-logo">Independent Newsmedia</div>
-        <div class="press-logo">Arizona Digital Free Press</div>
-        <!-- Duplicate for seamless loop -->
-        <div class="press-logo">Washington Times</div>
-        <div class="press-logo">AZ Family</div>
-        <div class="press-logo">AZ Big Media</div>
-        <div class="press-logo">AZ Business Magazine</div>
-        <div class="press-logo">The AZ Insider</div>
-        <div class="press-logo">WNG.org</div>
-        <div class="press-logo">Independent Newsmedia</div>
-        <div class="press-logo">Arizona Digital Free Press</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════
-     FORM SECTION — light bg
-════════════════════════════════ -->
-<section class="form-sec" id="apply">
-  <div class="c">
-    <div class="form-grid">
-
-      <!-- Left pitch -->
-      <div class="form-left">
-        <div class="avail-row">
-          <div class="avail-dot"></div>
-          Now Enrolling · 2026–27 School Year
-        </div>
-        <h2 class="disp d3">Tuition-free virtual real-world skills education for <span style="background:var(--black);color:var(--green);padding:0 6px;display:inline">grades 4–8</span></h2>
-        <p>Guided by real teachers and AI, Unbound Academy students master academics in 2 focused hours, then spend afternoons building real-world skills. See if Unbound Academy is the right fit for your family.</p>
-
-        <div class="price-block">
-          <div>
-            <div class="price-num">Fully funded by Arizona</div>
-            <div class="price-note">No fees, no reimbursement.</div>
-          </div>
-          <div class="price-icon">🛡️</div>
-        </div>
-
-        <div class="reassure">
-          <div class="ri"><div class="ri-check">✓</div><span><strong>Public charter school</strong>, state-funded</span></div>
-          <div class="ri"><div class="ri-check">✓</div><span><strong>All eligible applicants accepted.</strong> No transcripts or test scores required</span></div>
-          <div class="ri"><div class="ri-check">✓</div><span><strong>1:1 academic coaching</strong> available for students who need extra support</span></div>
-        </div>
-
-        <div class="side-quote">
-          <div class="qt">"We did business builders where we started a business and tried to earn $50. I'm actually going to use this in the future. There's a lot more life skills we're going to use."</div>
-          <div class="qb">Unbound Academy student</div>
-        </div>
-      </div>
-
-      <!-- Form card -->
-      <div>
+    <div class="hero-form" id="apply">
         <div class="form-card">
           <div class="form-badge">🔥 Limited Spots</div>
           <h3>Start Your Enrollment</h3>
@@ -537,6 +485,77 @@
             <button type="submit" class="btn-submit">Enroll Now →</button>
           </form>
           <p class="form-trust">🔒 Secure · No commitment · Arizona families</p>
+        </div>
+    </div><!-- /hero-form -->
+
+    </div><!-- /hero-grid -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     PRESS STRIP — dark
+════════════════════════════════ -->
+<div class="press-strip">
+  <div class="press-inner">
+    <div class="press-label">As Seen In</div>
+    <div class="press-marquee">
+      <!-- Track is duplicated for seamless loop -->
+      <div class="press-track">
+        <div class="press-logo">Washington Times</div>
+        <div class="press-logo">AZ Family</div>
+        <div class="press-logo">AZ Big Media</div>
+        <div class="press-logo">AZ Business Magazine</div>
+        <div class="press-logo">The AZ Insider</div>
+        <div class="press-logo">WNG.org</div>
+        <div class="press-logo">Independent Newsmedia</div>
+        <div class="press-logo">Arizona Digital Free Press</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="press-logo">Washington Times</div>
+        <div class="press-logo">AZ Family</div>
+        <div class="press-logo">AZ Big Media</div>
+        <div class="press-logo">AZ Business Magazine</div>
+        <div class="press-logo">The AZ Insider</div>
+        <div class="press-logo">WNG.org</div>
+        <div class="press-logo">Independent Newsmedia</div>
+        <div class="press-logo">Arizona Digital Free Press</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     FORM SECTION — light bg
+════════════════════════════════ -->
+<section class="form-sec">
+  <div class="c">
+    <div class="form-grid form-grid--solo">
+
+      <!-- Left pitch -->
+      <div class="form-left">
+        <div class="avail-row">
+          <div class="avail-dot"></div>
+          Now Enrolling · 2026–27 School Year
+        </div>
+        <h2 class="disp d3">Tuition-free virtual real-world skills education for <span style="background:var(--black);color:var(--green);padding:0 6px;display:inline">grades 4–8</span></h2>
+        <p>Guided by real teachers and AI, Unbound Academy students master academics in 2 focused hours, then spend afternoons building real-world skills. See if Unbound Academy is the right fit for your family.</p>
+
+        <div class="price-block">
+          <div>
+            <div class="price-num">Fully funded by Arizona</div>
+            <div class="price-note">No fees, no reimbursement.</div>
+          </div>
+          <div class="price-icon">🛡️</div>
+        </div>
+
+        <div class="reassure">
+          <div class="ri"><div class="ri-check">✓</div><span><strong>Public charter school</strong>, state-funded</span></div>
+          <div class="ri"><div class="ri-check">✓</div><span><strong>All eligible applicants accepted.</strong> No transcripts or test scores required</span></div>
+          <div class="ri"><div class="ri-check">✓</div><span><strong>1:1 academic coaching</strong> available for students who need extra support</span></div>
+        </div>
+
+        <div class="side-quote">
+          <div class="qt">"We did business builders where we started a business and tried to earn $50. I'm actually going to use this in the future. There's a lot more life skills we're going to use."</div>
+          <div class="qb">Unbound Academy student</div>
         </div>
       </div>
 

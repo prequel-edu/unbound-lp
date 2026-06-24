@@ -1,5 +1,26 @@
 # Changelog — unbound-lp
 
+## 2026-06-23 — Move enrollment form above the fold (all chassis + variants)
+
+**Change.** The enrollment form card was moved up into the hero so it sits above the fold on
+`join.unbound.school/`, the 3 variants (`human-centric/`, `ai-driven/`, `life-skills/`), and `v2/`.
+
+- **Desktop:** hero is now a 2-column grid — headline/subhead/CTA/stat on the left, white form
+  card on the right (`.hero-grid` / `.hero-form`). Whole form sits above the fold.
+- **Mobile (≤960px):** the hero stacks via flexbox with `display:contents` on `.hero-body`,
+  reordering to eyebrow → H1 → **form** → subhead → button → pills, so the form heading and first
+  inputs are above the fold while the headline hook stays on top.
+- `id="apply"` moved onto the hero form, so all "Enroll Now" CTAs (nav, hero, final, sticky) still
+  target it.
+- The former form section keeps its pitch/price/reassurance/parent-quote as a centered single-column
+  trust band (`.form-grid--solo`), preserving the `build-variants.mjs` per-variant copy markers.
+
+**Verified (Playwright, local + live):** 1 form per page (moved, not duplicated), correct `lp_variant`
+per variant, no horizontal scroll, and the 2026-06-12 silent-submit validation still blocks empty
+submits (inline errors, no HubSpot POST, no redirect).
+
+**Rollback.** `git revert` this commit; GitHub Pages redeploys `main` on push.
+
 ## 2026-06-12 — Fix: silent form-submission failure (all LP variants)
 
 **Problem.** The submit handler called `await fetch(<hubspot submit>)` without checking
