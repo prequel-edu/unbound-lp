@@ -89,6 +89,13 @@
       .steps{grid-template-columns:1fr}
       h1{font-size:clamp(44px,12vw,72px)}
     }
+  
+    .page{position:relative}
+    .circ2{position:absolute;border-radius:50%;pointer-events:none}
+    .circ2-a{width:80px;height:80px;background:#F956F1;top:-30px;right:-20px}
+    .circ2-b{width:44px;height:44px;background:#3434FF;top:60px;right:-46px}
+    .circ2-c{width:100px;height:100px;background:#EAB300;bottom:40px;left:-60px}
+    @media(max-width:760px){.circ2{display:none}}
   </style>
 </head>
 <body>
@@ -117,6 +124,7 @@
     </div>
     <p style="font-size:14px;color:var(--ink3);line-height:1.6;margin-bottom:52px">Two ways to move forward: talk with Mike Goto, our Head of School, or go straight into the application. Either way, our team will reach out to help you finish.</p>
 
+    <div class="circ2 circ2-a"></div><div class="circ2 circ2-b"></div><div class="circ2 circ2-c"></div>
     <div class="steps-lbl">What to expect</div>
     <div class="steps">
       <div class="step active">

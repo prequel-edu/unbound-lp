@@ -27,6 +27,16 @@
     .hl-mark{box-shadow:inset 0 -0.42em 0 0 var(--green)}
     .hero-form .form-card{position:relative;z-index:2}
     @media(max-width:760px){.circ{display:none}}
+  
+    /* brand circles: schedule / testimonials / final CTA (2026-07) */
+    .schedule-sec{position:relative;overflow:hidden}
+    .cta-sec{position:relative;overflow:hidden}
+    .circ-sched1{width:110px;height:110px;background:#F956F1;top:56px;right:-34px}
+    .circ-sched2{width:44px;height:44px;background:#CEFF65;top:190px;right:80px}
+    .circ-testi{width:64px;height:64px;background:#EAB300;top:-26px;left:-38px}
+    .circ-cta1{width:140px;height:140px;background:#3434FF;top:-40px;left:-40px}
+    .circ-cta2{width:90px;height:90px;background:#F956F1;bottom:-30px;right:60px}
+    .circ-cta3{width:40px;height:40px;background:#EAB300;top:60px;right:180px}
   </style>
 
   <style>
@@ -575,6 +585,8 @@
      SCHEDULE — dark
 ════════════════════════════════ -->
 <section class="schedule-sec" id="schedule">
+  <div class="circ circ-sched1"></div>
+  <div class="circ circ-sched2"></div>
   <div class="c">
     <div class="schedule-grid">
       <div class="sch-left">
@@ -885,7 +897,7 @@
   <div class="c">
     <div class="testy-header">
       <div class="lbl-dark">Parent Stories</div>
-      <h2 class="disp d3" style="color:#fff">What Arizona Families Say.</h2>
+      <div style="position:relative;display:inline-block"><div class="circ circ-testi"></div><h2 class="disp d3" style="color:#fff;position:relative">What Arizona Families Say.</h2></div>
     </div>
     <div class="testy-grid" id="testyGrid">
       <div class="testy-card">
@@ -1022,6 +1034,9 @@
      FINAL CTA — green
 ════════════════════════════════ -->
 <section class="cta-sec">
+  <div class="circ circ-cta1"></div>
+  <div class="circ circ-cta2"></div>
+  <div class="circ circ-cta3"></div>
   <div class="c">
     <div class="lbl-cta">Get Started</div>
     <h2 class="disp d2">Apply Today. Build Something Real.</h2>
