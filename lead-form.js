@@ -34,6 +34,10 @@
   }
 
   function boot() {
+    // Webflow's default placeholder on API-built inputs can't be cleared headlessly — do it here
+    document.querySelectorAll('input[placeholder="Example text"]').forEach(function (i) {
+      i.placeholder = '';
+    });
     fillUTMFields();
     new MutationObserver(fillUTMFields).observe(document.body, { subtree: true, childList: true });
   }
