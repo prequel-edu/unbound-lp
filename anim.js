@@ -47,8 +47,14 @@
       ].join(',');
 
       var els = Array.prototype.slice.call(document.querySelectorAll(rvSel)).filter(function (el) {
-        /* skip nav/footer, sliders, and anything driven by Webflow interactions */
-        if (el.closest('[data-w-id],.w-slider,.navbar,.nav_wrap,footer,.footer')) return false;
+        /* skip nav/footer and sliders */
+        if (el.closest('.w-slider,.navbar,.nav_wrapper,.nav_wrap,footer,.footer')) return false;
+        /* skip elements Webflow interactions already animate: own trigger id,
+           IX2 initial inline styles, or word-by-word text reveals inside */
+        if (el.hasAttribute('data-w-id')) return false;
+        var st = el.getAttribute('style') || '';
+        if (/opacity|transform/.test(st)) return false;
+        if (el.querySelector('.is-word')) return false;
         return true;
       });
 
