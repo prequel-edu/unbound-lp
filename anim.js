@@ -41,12 +41,10 @@
         /* about-us / community-partners / admissions / governing board */
         '.staff_item', '.locations_card', '.collection-item-3',
         /* experience pages (guarded below against Webflow interactions) */
-        '.faqs_item', '.history_item',
-        /* every page gets at least section headings */
-        'h2'
+        '.faqs_item', '.history_item'
       ].join(',');
 
-      var els = Array.prototype.slice.call(document.querySelectorAll(rvSel)).filter(function (el) {
+      function eligible(el) {
         /* skip nav/footer and sliders */
         if (el.closest('.w-slider,.navbar,.nav_wrapper,.nav_wrap,footer,.footer')) return false;
         /* skip elements Webflow interactions already animate: own trigger id,
@@ -56,6 +54,16 @@
         if (/opacity|transform/.test(st)) return false;
         if (el.querySelector('.is-word')) return false;
         return true;
+      }
+
+      /* pass 1: cards; pass 2: section headings on every page,
+         skipping headings already inside a revealed card */
+      var els = Array.prototype.slice.call(document.querySelectorAll(rvSel)).filter(eligible);
+      var inCards = els.slice();
+      Array.prototype.slice.call(document.querySelectorAll('h2,h3')).forEach(function (h) {
+        if (!eligible(h)) return;
+        for (var i = 0; i < inCards.length; i++) if (inCards[i].contains(h)) return;
+        els.push(h);
       });
 
       var counts = [];
