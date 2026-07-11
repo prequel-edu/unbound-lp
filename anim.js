@@ -15,6 +15,10 @@
         /* hover: press card image zoom (its wrapper is overflow:hidden) */
         + '.press-card-img img{transition:transform .4s ease}'
         + '.press-card:hover .press-card-img img{transform:scale(1.05)}'
+        /* floating decor circles */
+        + '@keyframes ua-float-a{from{transform:translate(0,0)}to{transform:translate(7px,-12px)}}'
+        + '@keyframes ua-float-b{from{transform:translate(0,0)}to{transform:translate(-9px,10px)}}'
+        + '@keyframes ua-float-c{from{transform:translate(0,0)}to{transform:translate(10px,6px)}}'
         /* scroll-reveal — declared last so it wins the transition while active */
         + '.ua-rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}'
         + '.ua-rv-in{opacity:1;transform:translateY(0)}';
@@ -95,6 +99,56 @@
       }, { rootMargin: '0px 0px -8% 0px' });
 
       els.forEach(function (el) { io.observe(el); });
+
+      /* ---- highlight/underline roll-out ----
+         Site highlights are spans with `box-shadow: inset 0 -.42em <color>`.
+         Swap each for a bottom gradient of the same color/height and grow
+         background-size 0% -> 100% when the span scrolls into view. */
+      var hlSel = '.nh-hl,.nh-hlb,.nh-hlp,.hf-hl,.np-hl,.pf-hl,.tr-hl,.gr-hl,.hl-lime,.text-highlight';
+      var hls = Array.prototype.slice.call(document.querySelectorAll(hlSel)).filter(function (el) {
+        if (el.closest('.w-slider,.navbar,.nav_wrapper,.nav_wrap,footer,.footer')) return false;
+        if (el.hasAttribute('data-w-id') || el.querySelector('.is-word') || el.closest('.is-word')) return false;
+        return true;
+      });
+      hls.forEach(function (el) {
+        var cs = getComputedStyle(el);
+        var sh = cs.boxShadow || '';
+        var color = (sh.match(/rgba?\([^)]+\)/) || [null])[0];
+        var nums = sh.replace(/rgba?\([^)]+\)/g, '').match(/-?[\d.]+/g) || [];
+        var h = Math.abs(parseFloat(nums[1] || 0));
+        if (!color || sh.indexOf('inset') === -1 || h < 2) return; /* not a band highlight — leave alone */
+        el.style.boxShadow = 'none';
+        el.style.backgroundImage = 'linear-gradient(' + color + ',' + color + ')';
+        el.style.backgroundRepeat = 'no-repeat';
+        el.style.backgroundPosition = '0 100%';
+        el.style.backgroundSize = '0% ' + h + 'px';
+        el.style.webkitBoxDecorationBreak = 'clone';
+        el.style.boxDecorationBreak = 'clone';
+        el.style.transition = 'background-size .7s cubic-bezier(.4,0,.2,1) .35s';
+        el.setAttribute('data-ua-hlh', h);
+      });
+      var ioHl = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          ioHl.unobserve(e.target);
+          e.target.style.backgroundSize = '100% ' + e.target.getAttribute('data-ua-hlh') + 'px';
+        });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      hls.forEach(function (el) { if (el.getAttribute('data-ua-hlh')) ioHl.observe(el); });
+
+      /* ---- floating decor circles ----
+         Slow drift on the absolutely-positioned decorative circles.
+         Strict runtime checks so only true decor is touched. */
+      var circSel = '[class*="-circ"],.hm-c1,.hm-c2,.hm-c3,.hm-s1,.hm-s2,.hm-k1,.hm-k2,'
+        + '.pg-c1,.pg-c2,.pg-c3,.ad-c1,.ad-c2,.ad-c3,.ct-c1,.ct-c2,.ab-c1,.ab-c2,.ab-c3,'
+        + '.ab2-c1,.ab2-c2,.ab2-c3,.ps-c1,.ps-c2,.gr-c1,.gr-c2,.gr-c3';
+      var names = ['ua-float-a', 'ua-float-b', 'ua-float-c'];
+      Array.prototype.slice.call(document.querySelectorAll(circSel)).forEach(function (el, i) {
+        if (el.children.length || el.hasAttribute('data-w-id')) return;
+        var cs = getComputedStyle(el);
+        if (cs.position !== 'absolute' || cs.borderRadius.indexOf('50%') === -1 || cs.transform !== 'none') return;
+        el.style.animation = names[i % 3] + ' ' + (7 + (i % 5) * 1.4).toFixed(1) + 's ease-in-out ' + (-(i * 1.7)).toFixed(1) + 's infinite alternate';
+      });
     } catch (err) {
       /* never break the page for a decorative effect */
       if (window.console && console.warn) console.warn('ua-anim skipped:', err);
