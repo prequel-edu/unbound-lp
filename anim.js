@@ -15,6 +15,14 @@
         /* hover: press card image zoom (its wrapper is overflow:hidden) */
         + '.press-card-img img{transition:transform .4s ease}'
         + '.press-card:hover .press-card-img img{transform:scale(1.05)}'
+        /* CTA buttons: hover lift + press feedback (translate/scale so existing
+           transition/transform declarations are untouched) */
+        + '.ua-cta:hover{translate:0 -2px;scale:1.03;box-shadow:0 8px 20px -10px rgba(15,23,32,.45)}'
+        + '.ua-cta:active{translate:0 0;scale:.96}'
+        /* periodic sheen sweep on primary conversion buttons */
+        + '@keyframes ua-sheen{0%{transform:translateX(-150%) skewX(-18deg)}14%{transform:translateX(400%) skewX(-18deg)}100%{transform:translateX(400%) skewX(-18deg)}}'
+        + '.ua-sheen{overflow:hidden}'
+        + '.ua-sheen::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));transform:translateX(-150%) skewX(-18deg);animation:ua-sheen 6s ease-in-out infinite;animation-delay:var(--ua-sh-d,2s);pointer-events:none}'
         /* floating decor circles */
         + '@keyframes ua-float-a{from{transform:translate(0,0)}to{transform:translate(7px,-12px)}}'
         + '@keyframes ua-float-b{from{transform:translate(0,0)}to{transform:translate(-9px,10px)}}'
@@ -148,6 +156,27 @@
         var cs = getComputedStyle(el);
         if (cs.position !== 'absolute' || cs.borderRadius.indexOf('50%') === -1 || cs.transform !== 'none') return;
         el.style.animation = names[i % 3] + ' ' + (7 + (i % 5) * 1.4).toFixed(1) + 's ease-in-out ' + (-(i * 1.7)).toFixed(1) + 's infinite alternate';
+      });
+
+      /* ---- CTA buttons: lift on hover, sheen on primary conversion CTAs ---- */
+      var ctaSel = '.nav_cta-enroll,.nav_cta-info,.nh-pill-lime,.nh-pill-lime-sm,.nh-pill-outline,.nh-pill-white,'
+        + '.np-pill-lime,.tr-btn-lime,.tr-btn-outline,.pr-btnp,.pr-btns,.press-events-cta,.button,.hf-btn,.hf-submit';
+      var sheenSel = '.nav_cta-enroll,.nh-pill-lime,.nh-pill-lime-sm,.np-pill-lime,.tr-btn-lime,.pr-btnp';
+      var sheenCount = 0;
+      Array.prototype.slice.call(document.querySelectorAll(ctaSel)).forEach(function (el) {
+        el.classList.add('ua-cta');
+        /* append to any existing transition so color/bg hovers keep working */
+        var cur = getComputedStyle(el).transition;
+        el.style.transition = (cur && cur.indexOf('all 0s') !== 0 ? cur + ',' : '') + 'translate .2s ease,scale .2s ease,box-shadow .25s ease';
+        var isPrimary = el.matches(sheenSel)
+          || (el.classList.contains('button') && /enroll|apply/i.test(el.textContent || el.value || ''));
+        /* ::after doesn't render on <input>, so sheen only on real elements */
+        if (isPrimary && el.tagName !== 'INPUT') {
+          if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
+          el.classList.add('ua-sheen');
+          el.style.setProperty('--ua-sh-d', (2 + (sheenCount % 4) * 1.6).toFixed(1) + 's');
+          sheenCount++;
+        }
       });
     } catch (err) {
       /* never break the page for a decorative effect */
